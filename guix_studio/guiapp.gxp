@@ -1173,7 +1173,7 @@
 </theme_info>
 <string_table>
 <sort_column>-1</sort_column>
-<num_strings>11</num_strings>
+<num_strings>13</num_strings>
 <num_languages>1</num_languages>
 <string_record>
 <id>HELLO_WORLD</id>
@@ -1225,6 +1225,16 @@
 <font>0</font>
 <val>Team 7</val>
 </string_record>
+<string_record>
+<id>STRING_3</id>
+<font>0</font>
+<val>Team 7 DSE</val>
+</string_record>
+<string_record>
+<id>STRING_4</id>
+<font>0</font>
+<val>Team 7DSE</val>
+</string_record>
 </string_table>
 <widget>
 <type>window</type>
@@ -1261,7 +1271,7 @@
 <id_name>ID_HELLO</id_name>
 <template>FALSE</template>
 <visible_at_startup>FALSE</visible_at_startup>
-<string_id>STRING_2</string_id>
+<string_id>STRING_3</string_id>
 <font_id>PROMPT</font_id>
 <normal_text_color>TEXT</normal_text_color>
 <selected_text_color>SELECTED_TEXT</selected_text_color>

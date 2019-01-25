@@ -6,7 +6,7 @@
 /*  www.expresslogic.com.                                                      */
 /*                                                                             */
 /*  GUIX Studio Revision 5.4.1.1                                               */
-/*  Date (dd.mm.yyyy): 22. 1.2019   Time (hh:mm): 19:25                        */
+/*  Date (dd.mm.yyyy): 24. 1.2019   Time (hh:mm): 18:26                        */
 /*******************************************************************************/
 
 
@@ -100,7 +100,7 @@ GX_WINDOW_PROPERTIES window2_properties =
 };
 GX_PROMPT_PROPERTIES window2_hellotext_properties =
 {
-    GX_STRING_ID_STRING_2,                   /* string id                      */
+    GX_STRING_ID_STRING_3,                   /* string id                      */
     GX_FONT_ID_PROMPT,                       /* font id                        */
     GX_COLOR_ID_TEXT,                        /* normal text color              */
     GX_COLOR_ID_SELECTED_TEXT                /* selected text color            */
