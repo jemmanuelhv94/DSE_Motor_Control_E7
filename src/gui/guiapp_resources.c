@@ -6,7 +6,7 @@
 /*  site at www.expresslogic.com.                                              */
 /*                                                                             */
 /*  GUIX Studio Revision 5.4.1.1                                               */
-/*  Date (dd.mm.yyyy): 16. 1.2019   Time (hh:mm): 19:33                        */
+/*  Date (dd.mm.yyyy): 22. 1.2019   Time (hh:mm): 19:25                        */
 /*******************************************************************************/
 
 
@@ -331,10 +331,12 @@ GX_CONST GX_UBYTE display_1_INSTRUCT_CHECKBOX_English[30] = "Press \"Press Me!\"
 GX_CONST GX_UBYTE display_1_WINDOW1_English[8] = "Window1";
 GX_CONST GX_UBYTE display_1_WINDOW2_English[8] = "Window2";
 GX_CONST GX_UBYTE display_1_INSTRUCT_BUTTON_English[23] = "Press to go to window2";
+GX_CONST GX_UBYTE display_1_STRING_1_English[15] = "Enable Window2";
+GX_CONST GX_UBYTE display_1_STRING_2_English[7] = "Team 7";
 
 /* String Table for display_1 language English                                 */
 
-GX_CONST GX_UBYTE *display_1_English_string_table[9] =
+GX_CONST GX_UBYTE *display_1_English_string_table[11] =
 {
     GX_NULL,
     display_1_HELLO_WORLD_English,
@@ -344,7 +346,9 @@ GX_CONST GX_UBYTE *display_1_English_string_table[9] =
     display_1_INSTRUCT_CHECKBOX_English,
     display_1_WINDOW1_English,
     display_1_WINDOW2_English,
-    display_1_INSTRUCT_BUTTON_English
+    display_1_INSTRUCT_BUTTON_English,
+    display_1_STRING_1_English,
+    display_1_STRING_2_English
 
 };
 
