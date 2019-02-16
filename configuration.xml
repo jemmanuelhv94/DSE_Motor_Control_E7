@@ -201,8 +201,14 @@
   </synergyComponentSelection>
   <synergyIcuConfiguration/>
   <synergyMessagingConfiguration>
+    <event display="sensor" value="SF_MESSAGE_EVENT_SENSOR"/>
+    <eventClass display="sensor" header="sensor_api.h" id="eventClass.862914249" payload="sensor_payload" payloadType="sensor_payload_t" value="SF_MESSAGE_EVENT_CLASS_SENSOR"/>
     <subscriber context="rtos.threadx.thread.239426899" end="0" id="subscriber.859390088" start="0">
       <subscribe eventClass="module.framework.sf_touch_panel.eventClass.eventClassTouch"/>
+      <subscribe eventClass="eventClass.862914249"/>
+    </subscriber>
+    <subscriber context="rtos.threadx.thread.1801288208" end="1" id="subscriber.542752993" start="0">
+      <subscribe eventClass="eventClass.862914249"/>
     </subscriber>
   </synergyMessagingConfiguration>
   <synergyModuleConfiguration>
@@ -621,6 +627,14 @@
         <property id="rtos.threadx.object.semaphore.symbol" value="g_main_semaphore_lcdc"/>
         <property id="rtos.threadx.object.semaphore.count" value="0"/>
       </object>
+    </context>
+    <context id="rtos.threadx.thread.1801288208">
+      <property id="_symbol" value="sensor_thread"/>
+      <property id="rtos.threadx.thread.name" value="Sensor Thread"/>
+      <property id="rtos.threadx.thread.stack" value="1024"/>
+      <property id="rtos.threadx.thread.priority" value="1"/>
+      <property id="rtos.threadx.thread.autostart" value="rtos.threadx.thread.autostart.enabled"/>
+      <property id="rtos.threadx.thread.timeslice" value="1"/>
     </context>
     <config id="config.driver.jpeg_decode">
       <property id="config.driver.jpeg_decode.param_checking_enable" value="config.driver.jpeg_decode.param_checking_enable.enabled"/>

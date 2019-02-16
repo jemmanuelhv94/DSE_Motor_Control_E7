@@ -648,7 +648,30 @@ Synergy Configuration
       Symbol: g_main_semaphore_lcdc
       Initial count: 0
       
+  Thread "Sensor Thread"
+    Symbol: sensor_thread
+    Name: Sensor Thread
+    Stack size (bytes): 1024
+    Priority: 1
+    Auto start: Enabled
+    Time slicing interval (ticks): 1
+    
   Messaging
+    Event "sensor"
+      Symbol: SF_MESSAGE_EVENT_SENSOR
+      Name: sensor
+      
+    Event Class "sensor"
+      Symbol: SF_MESSAGE_EVENT_CLASS_SENSOR
+      Name: sensor
+      Payload header file: sensor_api.h
+      Payload: sensor_payload
+      Payload type: sensor_payload_t
+      
     Subscriber "Main Thread" 0 0
       Event Class "Touch"
+      Event Class "sensor"
+      
+    Subscriber "Sensor Thread" 0 1
+      Event Class "sensor"
       

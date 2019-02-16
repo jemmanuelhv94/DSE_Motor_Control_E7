@@ -6,7 +6,7 @@
 /*  site at www.expresslogic.com.                                              */
 /*                                                                             */
 /*  GUIX Studio Revision 5.4.1.1                                               */
-/*  Date (dd.mm.yyyy): 24. 1.2019   Time (hh:mm): 18:26                        */
+/*  Date (dd.mm.yyyy): 16. 2.2019   Time (hh:mm): 12:31                        */
 /*******************************************************************************/
 
 
@@ -323,36 +323,40 @@ GX_CONST GX_PIXELMAP *display_1_theme_1_pixelmap_table[] =
 
 /* String values                                                               */
 
-GX_CONST GX_UBYTE display_1_HELLO_WORLD_English[25] = "Hello World (to window1)";
-GX_CONST GX_UBYTE display_1_CHECKBOX_TEXT_English[10] = "Press Me!";
-GX_CONST GX_UBYTE display_1_BUTTON_DISABLED_English[16] = "Stay in window1";
-GX_CONST GX_UBYTE display_1_BUTTON_ENABLED_English[13] = "Goto window2";
-GX_CONST GX_UBYTE display_1_INSTRUCT_CHECKBOX_English[30] = "Press \"Press Me!\" for more.";
-GX_CONST GX_UBYTE display_1_WINDOW1_English[8] = "Window1";
-GX_CONST GX_UBYTE display_1_WINDOW2_English[8] = "Window2";
-GX_CONST GX_UBYTE display_1_INSTRUCT_BUTTON_English[23] = "Press to go to window2";
+GX_CONST GX_UBYTE display_1_LBL_DSE_English[24] = "DSE PROYECTO INTEGRADOR";
+GX_CONST GX_UBYTE display_1_LBL_START_English[8] = "START!!";
+GX_CONST GX_UBYTE display_1_LBL_INFO_DUTY_CYCLE_English[12] = "DUTY CYCLE:";
+GX_CONST GX_UBYTE display_1_LBL_INFO_SPEED_English[7] = "SPEED:";
+GX_CONST GX_UBYTE display_1_LBL_INFO_SET_POINT_English[10] = "SET_POINT";
+GX_CONST GX_UBYTE display_1_LBL_STOP_English[7] = "STOP!!";
+GX_CONST GX_UBYTE display_1_LBL_INC_English[2] = "+";
+GX_CONST GX_UBYTE display_1_LBL_DEC_English[2] = "-";
 GX_CONST GX_UBYTE display_1_STRING_1_English[15] = "Enable Window2";
 GX_CONST GX_UBYTE display_1_STRING_2_English[7] = "Team 7";
 GX_CONST GX_UBYTE display_1_STRING_3_English[11] = "Team 7 DSE";
 GX_CONST GX_UBYTE display_1_STRING_4_English[10] = "Team 7DSE";
+GX_CONST GX_UBYTE display_1_STRING_5_English[7] = "prompt";
+GX_CONST GX_UBYTE display_1_STRING_6_English[7] = "button";
 
 /* String Table for display_1 language English                                 */
 
-GX_CONST GX_UBYTE *display_1_English_string_table[13] =
+GX_CONST GX_UBYTE *display_1_English_string_table[15] =
 {
     GX_NULL,
-    display_1_HELLO_WORLD_English,
-    display_1_CHECKBOX_TEXT_English,
-    display_1_BUTTON_DISABLED_English,
-    display_1_BUTTON_ENABLED_English,
-    display_1_INSTRUCT_CHECKBOX_English,
-    display_1_WINDOW1_English,
-    display_1_WINDOW2_English,
-    display_1_INSTRUCT_BUTTON_English,
+    display_1_LBL_DSE_English,
+    display_1_LBL_START_English,
+    display_1_LBL_INFO_DUTY_CYCLE_English,
+    display_1_LBL_INFO_SPEED_English,
+    display_1_LBL_INFO_SET_POINT_English,
+    display_1_LBL_STOP_English,
+    display_1_LBL_INC_English,
+    display_1_LBL_DEC_English,
     display_1_STRING_1_English,
     display_1_STRING_2_English,
     display_1_STRING_3_English,
-    display_1_STRING_4_English
+    display_1_STRING_4_English,
+    display_1_STRING_5_English,
+    display_1_STRING_6_English
 
 };
 
