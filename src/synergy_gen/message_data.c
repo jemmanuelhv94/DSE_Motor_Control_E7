@@ -19,7 +19,7 @@ static sf_message_subscriber_list_t g_list_SF_MESSAGE_EVENT_CLASS_TOUCH =
 { .event_class = SF_MESSAGE_EVENT_CLASS_TOUCH, .number_of_nodes = 1, .pp_subscriber_group =
           gp_group_SF_MESSAGE_EVENT_CLASS_TOUCH };
 static sf_message_subscriber_t *gp_group_SF_MESSAGE_EVENT_CLASS_SENSOR[] =
-{ &sensor_thread_message_queue_0_1, &main_thread_message_queue_0_0, };
+{ &main_thread_message_queue_0_0, &sensor_thread_message_queue_0_1, };
 static sf_message_subscriber_list_t g_list_SF_MESSAGE_EVENT_CLASS_SENSOR =
 { .event_class = SF_MESSAGE_EVENT_CLASS_SENSOR, .number_of_nodes = 2, .pp_subscriber_group =
           gp_group_SF_MESSAGE_EVENT_CLASS_SENSOR };
