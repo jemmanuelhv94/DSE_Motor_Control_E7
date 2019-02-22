@@ -52,7 +52,7 @@ src/guiapp_event_handlers.o: ../src/guiapp_event_handlers.c \
  c:\users\uriel\documents\github\dse_motor_control_e7\synergy\ssp\src\bsp\mcu\all\bsp_error_checking.h \
  C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\framework\el/gx_port.h \
  C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy_cfg\ssp_cfg\framework\el/gx_user.h \
- ../src/gui/guiapp_specifications.h \
+ ../src/gui/guiapp_specifications.h ../src/guiapp_event_handlers.h \
  C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\src\synergy_gen/main_thread.h \
  C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\framework\el/tx_api.h \
  C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\src\synergy_gen/hal_data.h \
@@ -206,6 +206,8 @@ C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\framework\e
 C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy_cfg\ssp_cfg\framework\el/gx_user.h:
 
 ../src/gui/guiapp_specifications.h:
+
+../src/guiapp_event_handlers.h:
 
 C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\src\synergy_gen/main_thread.h:
 

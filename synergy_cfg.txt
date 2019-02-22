@@ -307,6 +307,9 @@ Synergy Configuration
     
   Module "Touch Panel Driver on touch_panel_sx8654"
   Module "JPEG Common"
+  Module "Timer Driver on r_agt"
+    Parameter Checking: Default (BSP)
+    
   HAL
     Instance "g_ioport I/O Port Driver on r_ioport"
       Name [Fixed]: g_ioport
@@ -652,10 +655,26 @@ Synergy Configuration
     Symbol: sensor_thread
     Name: Sensor Thread
     Stack size (bytes): 1024
-    Priority: 1
+    Priority: 5
     Auto start: Enabled
     Time slicing interval (ticks): 1
     
+    Instance "g_timer0 Timer Driver on r_agt"
+      Name: g_timer0
+      Channel: 0
+      Mode: Periodic
+      Period Value: 1
+      Period Unit: Seconds
+      Auto Start: True
+      Count Source: PCLKB
+      AGTO Output Enabled: False
+      AGTIO Output Enabled: False
+      Output Inverted: False
+      Enable comparator A output pin: False
+      Enable comparator B output pin: False
+      Callback: clickEvent
+      Underflow Interrupt Priority: Priority 3
+      
   Messaging
     Event "SENSOR"
       Symbol: SF_MESSAGE_EVENT_SENSOR

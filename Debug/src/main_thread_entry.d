@@ -97,7 +97,7 @@ src/main_thread_entry.o: ../src/main_thread_entry.c \
  C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\driver\instances/r_sci_spi.h \
  C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\driver\api/r_spi_api.h \
  ../src/gui/guiapp_specifications.h ../src/gui/guiapp_resources.h \
- ../src/hardware/lcd.h
+ ../src/guiapp_event_handlers.h ../src/hardware/lcd.h
 
 C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\src\synergy_gen/main_thread.h:
 
@@ -296,5 +296,7 @@ C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\driver\api/
 ../src/gui/guiapp_specifications.h:
 
 ../src/gui/guiapp_resources.h:
+
+../src/guiapp_event_handlers.h:
 
 ../src/hardware/lcd.h:

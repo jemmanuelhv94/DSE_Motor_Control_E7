@@ -2,6 +2,7 @@
 
 #include "gui/guiapp_resources.h"
 #include "gui/guiapp_specifications.h"
+#include "guiapp_event_handlers.h"
 
 #include "main_thread.h"
 extern GX_WINDOW_ROOT * p_window_root;
@@ -11,9 +12,6 @@ static UINT show_window(GX_WINDOW * p_new, GX_WIDGET * p_widget, bool detach_old
 static void update_numeric(GX_WIDGET * p_widget, GX_RESOURCE_ID id, int numeric);
 
 int set_point=0;
-char count_text;
-//static bool button_enabled = false;
-
 
 UINT window1_handler(GX_WINDOW *widget, GX_EVENT *event_ptr)
 {
@@ -28,36 +26,6 @@ UINT window1_handler(GX_WINDOW *widget, GX_EVENT *event_ptr)
             break;
     }
     return result;
-
-
-
-//    UINT result = gx_window_event_process(widget, event_ptr);
-//
-//    switch (event_ptr->gx_event_type)
-//    {
-////    case GX_SIGNAL(ID_BUTTONENABLER, GX_EVENT_TOGGLE_ON):
-////        button_enabled = true;
-////      //  update_text_id(widget->gx_widget_parent, ID_WINDOWCHANGER, "12345");
-////    count2++;
-////    count_text =(char) count2;
-////        update_text_id(widget->gx_widget_parent, ID_INSTRUCTIONS,(char) count_text);
-////        update_numeric(widget->gx_widget_parent, ID_INSTRUCTIONS2,  count2);
-////        break;
-////    case GX_SIGNAL(ID_BUTTONENABLER, GX_EVENT_TOGGLE_OFF):
-////        button_enabled = false;
-////      // update_text_id(widget->gx_widget_parent, ID_WINDOWCHANGER,  "HOla");
-////        update_text_id(widget->gx_widget_parent, ID_INSTRUCTIONS,  "asdasd");
-////        break;
-//    case GX_SIGNAL(ID_WINDOWCHANGER, GX_EVENT_CLICKED):
-//
-//            show_window((GX_WINDOW*)&window2, (GX_WIDGET*)widget, true);
-//    break;
-//    default:
-//        gx_window_event_process(widget, event_ptr);
-//        break;
-//    }
-//
-//    return result;
 }
 
 UINT window2_handler(GX_WINDOW *widget, GX_EVENT *event_ptr)
@@ -85,10 +53,12 @@ UINT window3_handler(GX_WINDOW *widget, GX_EVENT *event_ptr)
             break;
         case GX_SIGNAL(BTN_INC, GX_EVENT_CLICKED):
         set_point=set_point+20;
+        update_duty_cycle(set_point);
         update_numeric(widget->gx_widget_parent, PR_SET_POINT,  set_point);
         break;
         case GX_SIGNAL(BTN_DEC, GX_EVENT_CLICKED):
                 set_point=set_point-20;
+        update_duty_cycle(set_point);
         update_numeric(widget->gx_widget_parent, PR_SET_POINT,  set_point);
         break;
         case GX_SIGNAL(BTN_ABOUT, GX_EVENT_CLICKED):
@@ -150,8 +120,63 @@ static void update_numeric(GX_WIDGET * p_widget, GX_RESOURCE_ID id, int numeric)
     }
 }
 
-//void update_text_numeric(int count3)
-//{
-//    update_numeric((GX_WINDOW*)&window1, ID_INSTRUCTIONS2,  count3);
-//}
+void update_duty_cycle(int duty_cycle)
+{
+    update_numeric((GX_WIDGET*)&window3,PR_DUTY_CYCLE,duty_cycle);
+}
+
+void update_speed(int speed)
+{
+    update_numeric((GX_WIDGET*)&window3,PR_SPEED,speed);
+}
+
+void update_ventilador_2()
+{
+    update_ventilador((GX_WIDGET*)&window3,PR_VENTILADOR);
+}
+
+void update_ventilador(GX_WIDGET * p_widget, GX_RESOURCE_ID id)
+{
+static int count= 0;
+count++;
+    GX_PIXELMAP_PROMPT * p_prompt = NULL;
+    ssp_err_t err = gx_widget_find(p_widget, (USHORT)id, GX_SEARCH_DEPTH_INFINITE, (GX_WIDGET**)&p_prompt);
+        if (TX_SUCCESS == err)
+        {
+        switch(count)
+        {
+            case 0:
+    _gxe_pixelmap_prompt_pixelmap_set(p_prompt,
+                                      GX_PIXELMAP_ID_VENTILADOR1,
+                                      GX_PIXELMAP_ID_VENTILADOR1,
+                                      GX_PIXELMAP_ID_VENTILADOR1,
+                                      GX_PIXELMAP_ID_VENTILADOR1,
+                                      GX_PIXELMAP_ID_VENTILADOR1,
+                                      GX_PIXELMAP_ID_VENTILADOR1);
+    break;
+            case 1:
+                _gxe_pixelmap_prompt_pixelmap_set(p_prompt,
+                                                  GX_PIXELMAP_ID_VENTILADOR2,
+                                                  GX_PIXELMAP_ID_VENTILADOR2,
+                                                  GX_PIXELMAP_ID_VENTILADOR2,
+                                                  GX_PIXELMAP_ID_VENTILADOR2,
+                                                  GX_PIXELMAP_ID_VENTILADOR2,
+                                                  GX_PIXELMAP_ID_VENTILADOR2);
+                break;
+            case 2:
+                _gxe_pixelmap_prompt_pixelmap_set(p_prompt,
+                                                  GX_PIXELMAP_ID_VENTILADOR3,
+                                                  GX_PIXELMAP_ID_VENTILADOR3,
+                                                  GX_PIXELMAP_ID_VENTILADOR3,
+                                                  GX_PIXELMAP_ID_VENTILADOR3,
+                                                  GX_PIXELMAP_ID_VENTILADOR3,
+                                                  GX_PIXELMAP_ID_VENTILADOR3);
+                count=0;
+                break;
+            default:
+                break;
+
+        }
+        }
+}
 

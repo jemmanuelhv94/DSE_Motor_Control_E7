@@ -6,7 +6,7 @@
 /*  www.expresslogic.com.                                                      */
 /*                                                                             */
 /*  GUIX Studio Revision 5.4.1.1                                               */
-/*  Date (dd.mm.yyyy): 22. 2.2019   Time (hh:mm): 10:48                        */
+/*  Date (dd.mm.yyyy): 22. 2.2019   Time (hh:mm): 16:54                        */
 /*******************************************************************************/
 
 
@@ -380,7 +380,7 @@ GX_NUMERIC_PROMPT_PROPERTIES window3_PR_SET_POINT_properties =
     0,                                       /* string id                      */
     GX_FONT_ID_PROMPT,                       /* font id                        */
     GX_COLOR_ID_TEXT,                        /* normal text color              */
-    GX_COLOR_ID_SELECTED_TEXT,               /* selected text color            */
+    GX_COLOR_ID_TEXT,                        /* selected text color            */
     GX_NULL,                                 /* format function                */
     0                                        /* numeric prompt value           */
 };
@@ -393,7 +393,7 @@ GX_NUMERIC_PROMPT_PROPERTIES window3_PR_SPEED_properties =
     GX_NULL,                                 /* format function                */
     0                                        /* numeric prompt value           */
 };
-GX_PIXELMAP_PROMPT_PROPERTIES window3_prompt_1_properties =
+GX_PIXELMAP_PROMPT_PROPERTIES window3_PR_VENTILADOR_properties =
 {
     0,                                       /* string id                      */
     GX_FONT_ID_PROMPT,                       /* font id                        */
@@ -466,11 +466,11 @@ GX_CONST GX_STUDIO_WIDGET window3_BTN_ABOUT_define =
     (void *) &window3_BTN_ABOUT_properties   /* extended properties            */
 };
 
-GX_CONST GX_STUDIO_WIDGET window3_prompt_1_define =
+GX_CONST GX_STUDIO_WIDGET window3_PR_VENTILADOR_define =
 {
-    "prompt_1",
+    "PR_VENTILADOR",
     GX_TYPE_PIXELMAP_PROMPT,                 /* widget type                    */
-    GX_ID_NONE,                              /* widget id                      */
+    PR_VENTILADOR,                           /* widget id                      */
     #if defined(GX_WIDGET_USER_DATA)
     0,                                       /* user data                      */
     #endif
@@ -485,8 +485,8 @@ GX_CONST GX_STUDIO_WIDGET window3_prompt_1_define =
     {88, 10, 167, 89},                       /* widget size                    */
     &window3_BTN_ABOUT_define,               /* next widget definition         */
     GX_NULL,                                 /* no child widgets               */ 
-    offsetof(WINDOW3_CONTROL_BLOCK, window3_prompt_1), /* control block        */
-    (void *) &window3_prompt_1_properties    /* extended properties            */
+    offsetof(WINDOW3_CONTROL_BLOCK, window3_PR_VENTILADOR), /* control block   */
+    (void *) &window3_PR_VENTILADOR_properties /* extended properties          */
 };
 
 GX_CONST GX_STUDIO_WIDGET window3_PR_SPEED_define =
@@ -506,7 +506,7 @@ GX_CONST GX_STUDIO_WIDGET window3_PR_SPEED_define =
     GX_NULL,                                 /* drawing function override      */
     GX_NULL,                                 /* event function override        */
     {139, 133, 238, 156},                    /* widget size                    */
-    &window3_prompt_1_define,                /* next widget definition         */
+    &window3_PR_VENTILADOR_define,           /* next widget definition         */
     GX_NULL,                                 /* no child widgets               */ 
     offsetof(WINDOW3_CONTROL_BLOCK, window3_PR_SPEED), /* control block        */
     (void *) &window3_PR_SPEED_properties    /* extended properties            */
@@ -551,7 +551,7 @@ GX_CONST GX_STUDIO_WIDGET window3_PR_DUTY_CYCLE_define =
     gx_studio_numeric_prompt_create,         /* create function                */
     GX_NULL,                                 /* drawing function override      */
     GX_NULL,                                 /* event function override        */
-    {139, 98, 238, 121},                     /* widget size                    */
+    {139, 97, 238, 120},                     /* widget size                    */
     &window3_PR_SET_POINT_define,            /* next widget definition         */
     GX_NULL,                                 /* no child widgets               */ 
     offsetof(WINDOW3_CONTROL_BLOCK, window3_PR_DUTY_CYCLE), /* control block   */

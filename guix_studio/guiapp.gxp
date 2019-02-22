@@ -1182,7 +1182,7 @@
 <type>PIXELMAP</type>
 <name>CESEQ_PROYECTO</name>
 <pathinfo>
-<pathname>..\..\..\Documents\CESEQ_PROYECTO.png</pathname>
+<pathname>..\rsc\CESEQ_PROYECTO.png</pathname>
 <pathtype>project_relative</pathtype>
 </pathinfo>
 <is_default>FALSE</is_default>
@@ -1199,7 +1199,7 @@
 <type>PIXELMAP</type>
 <name>VENTILADOR1</name>
 <pathinfo>
-<pathname>..\..\..\Documents\ventilador1.png</pathname>
+<pathname>..\rsc\ventilador1.png</pathname>
 <pathtype>project_relative</pathtype>
 </pathinfo>
 <is_default>FALSE</is_default>
@@ -1216,7 +1216,7 @@
 <type>PIXELMAP</type>
 <name>VENTILADOR2</name>
 <pathinfo>
-<pathname>..\..\..\Documents\ventilador2.png</pathname>
+<pathname>..\rsc\ventilador2.png</pathname>
 <pathtype>project_relative</pathtype>
 </pathinfo>
 <is_default>FALSE</is_default>
@@ -1233,7 +1233,7 @@
 <type>PIXELMAP</type>
 <name>VENTILADOR3</name>
 <pathinfo>
-<pathname>..\..\..\Documents\ventilador3.png</pathname>
+<pathname>..\rsc\ventilador3.png</pathname>
 <pathtype>project_relative</pathtype>
 </pathinfo>
 <is_default>FALSE</is_default>
@@ -1250,7 +1250,7 @@
 <type>PIXELMAP</type>
 <name>ABOUT_NORMAL2</name>
 <pathinfo>
-<pathname>..\..\..\Documents\about_normal2.png</pathname>
+<pathname>..\rsc\about_normal2.png</pathname>
 <pathtype>project_relative</pathtype>
 </pathinfo>
 <is_default>FALSE</is_default>
@@ -1267,7 +1267,7 @@
 <type>PIXELMAP</type>
 <name>ABOUT_SELECTED2</name>
 <pathinfo>
-<pathname>..\..\..\Documents\about_selected2.png</pathname>
+<pathname>..\rsc\about_selected2.png</pathname>
 <pathtype>project_relative</pathtype>
 </pathinfo>
 <is_default>FALSE</is_default>
@@ -1284,7 +1284,7 @@
 <type>PIXELMAP</type>
 <name>CLOSE_SELECTED2</name>
 <pathinfo>
-<pathname>..\..\..\Documents\close_selected2.png</pathname>
+<pathname>..\rsc\close_selected2.png</pathname>
 <pathtype>project_relative</pathtype>
 </pathinfo>
 <is_default>FALSE</is_default>
@@ -1301,7 +1301,7 @@
 <type>PIXELMAP</type>
 <name>CLOSE_NORMAL2</name>
 <pathinfo>
-<pathname>..\..\..\Documents\close_normal2.png</pathname>
+<pathname>..\rsc\close_normal2.png</pathname>
 <pathtype>project_relative</pathtype>
 </pathinfo>
 <is_default>FALSE</is_default>
@@ -1641,9 +1641,9 @@ HW VER:</val>
 <app_name>PR_DUTY_CYCLE</app_name>
 <size>
 <left>139</left>
-<top>98</top>
+<top>97</top>
 <right>238</right>
-<bottom>121</bottom>
+<bottom>120</bottom>
 </size>
 <style>1610629120</style>
 <allocation>0</allocation>
@@ -1677,7 +1677,7 @@ HW VER:</val>
 <visible_at_startup>FALSE</visible_at_startup>
 <font_id>PROMPT</font_id>
 <normal_text_color>TEXT</normal_text_color>
-<selected_text_color>SELECTED_TEXT</selected_text_color>
+<selected_text_color>TEXT</selected_text_color>
 <numeric_prompt_value>0</numeric_prompt_value>
 </widget>
 <widget>
@@ -1704,7 +1704,7 @@ HW VER:</val>
 </widget>
 <widget>
 <type>pixelmap_prompt</type>
-<app_name>prompt_1</app_name>
+<app_name>PR_VENTILADOR</app_name>
 <size>
 <left>88</left>
 <top>10</top>
@@ -1716,6 +1716,7 @@ HW VER:</val>
 <accepts_focus>TRUE</accepts_focus>
 <normal_fill_color>WIDGET_FILL</normal_fill_color>
 <selected_fill_color>SELECTED_FILL</selected_fill_color>
+<id_name>PR_VENTILADOR</id_name>
 <template>FALSE</template>
 <visible_at_startup>FALSE</visible_at_startup>
 <font_id>PROMPT</font_id>
@@ -1853,7 +1854,7 @@ HW VER:</val>
 <template>FALSE</template>
 <visible_at_startup>FALSE</visible_at_startup>
 <normal_pixelmap>CLOSE_NORMAL2</normal_pixelmap>
-<selected_pixelmap>CLOSE_NORMAL2</selected_pixelmap>
+<selected_pixelmap>CLOSE_SELECTED2</selected_pixelmap>
 </widget>
 </widget>
 <widget>

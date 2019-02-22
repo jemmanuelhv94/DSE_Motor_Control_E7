@@ -198,6 +198,10 @@
       <description>Express Logic ThreadX: Provides=[ThreadX]</description>
       <originalPack>Renesas.Synergy.1.5.0.pack</originalPack>
     </component>
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_agt" variant="" vendor="Renesas" version="1.5.0">
+      <description>Asynchronous General Purpose Timer: Provides=[TIMER]</description>
+      <originalPack>Renesas.Synergy.1.5.0.pack</originalPack>
+    </component>
   </synergyComponentSelection>
   <synergyIcuConfiguration/>
   <synergyMessagingConfiguration>
@@ -584,6 +588,22 @@
     <module id="module.driver.jpeg_common.300486992">
       <property id="module.driver.jpeg_common.name" value="g_jpeg_common0"/>
     </module>
+    <module id="module.driver.timer_on_agt.844454336">
+      <property id="module.driver.timer.name" value="g_timer0"/>
+      <property id="module.driver.timer.channel" value="0"/>
+      <property id="module.driver.timer.mode" value="module.driver.timer.mode.mode_periodic"/>
+      <property id="module.driver.timer.period" value="1"/>
+      <property id="module.driver.timer.unit" value="module.driver.timer.unit.unit_period_sec"/>
+      <property id="module.driver.timer.autostart" value="module.driver.timer.autostart.true"/>
+      <property id="module.driver.timer.count_source" value="module.driver.timer.count_source.clock_pclkb"/>
+      <property id="module.driver.timer.agto_output_enabled" value="module.driver.timer.agto_output_enabled.false"/>
+      <property id="module.driver.timer.agtio_output_enabled" value="module.driver.timer.agtio_output_enabled.false"/>
+      <property id="module.driver.timer.output_inverted" value="module.driver.timer.output_inverted.false"/>
+      <property id="module.driver.timer.agtoa_output_enable" value="module.driver.timer.agtoa_output_enable.false"/>
+      <property id="module.driver.timer.agtob_output_enable" value="module.driver.timer.agtob_output_enable.false"/>
+      <property id="module.driver.timer.p_callback" value="clickEvent"/>
+      <property id="module.driver.timer.irq_ipl" value="board.icu.common.irq.priority3"/>
+    </module>
     <context id="_hal.0">
       <stack module="module.driver.ioport_on_ioport.918725209"/>
       <stack module="module.driver.cgc_on_cgc.1335811009"/>
@@ -632,9 +652,10 @@
       <property id="_symbol" value="sensor_thread"/>
       <property id="rtos.threadx.thread.name" value="Sensor Thread"/>
       <property id="rtos.threadx.thread.stack" value="1024"/>
-      <property id="rtos.threadx.thread.priority" value="1"/>
+      <property id="rtos.threadx.thread.priority" value="5"/>
       <property id="rtos.threadx.thread.autostart" value="rtos.threadx.thread.autostart.enabled"/>
       <property id="rtos.threadx.thread.timeslice" value="1"/>
+      <stack module="module.driver.timer_on_agt.844454336"/>
     </context>
     <config id="config.driver.jpeg_decode">
       <property id="config.driver.jpeg_decode.param_checking_enable" value="config.driver.jpeg_decode.param_checking_enable.enabled"/>
@@ -689,6 +710,9 @@
     </config>
     <config id="config.framework.sf_jpeg_decode">
       <property id="config.framework.sf_jpeg_decode.param_checking_enable" value="config.framework.sf_jpeg_decode.param_checking_enable.enabled"/>
+    </config>
+    <config id="config.driver.agt">
+      <property id="config.driver.agt.param_checking_enable" value="config.driver.agt.param_checking_enable.bsp"/>
     </config>
     <config id="config.driver.sci_spi">
       <property id="config.driver.sci_spi.param_checking_enable" value="config.driver.sci_spi.param_checking_enable.enabled"/>

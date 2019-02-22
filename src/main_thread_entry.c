@@ -4,6 +4,8 @@
 #include "gx_api.h"
 #include "gui/guiapp_specifications.h"
 #include "gui/guiapp_resources.h"
+#include "sensor_api.h"
+#include "guiapp_event_handlers.h"
 
 #if defined(BSP_BOARD_S7G2_SK)
 #include "hardware/lcd.h"
@@ -34,6 +36,7 @@ void main_thread_entry(void) {
 	ssp_err_t        err;
 	sf_message_header_t * p_message = NULL;
 	UINT      status = TX_SUCCESS;
+	sensor_payload_t* sensor_payload;
 
     /* Initializes GUIX. */
     status = gx_system_initialize();
@@ -157,6 +160,7 @@ void main_thread_entry(void) {
 			{
 				/** Translate an SSP touch event into a GUIX event */
 				new_gui_event = ssp_touch_to_guix((sf_touch_panel_payload_t*)p_message, &g_gx_event);
+
 			}
 			default:
 				break;
@@ -165,12 +169,15 @@ void main_thread_entry(void) {
 		}
 		case SF_MESSAGE_EVENT_CLASS_SENSOR:
 		{
+		    sensor_payload = (sensor_payload_t *) p_message;
 		    switch (p_message->event_b.code)
 		                {
 		                case SF_MESSAGE_EVENT_SENSOR:
 		                {
+		                    update_duty_cycle(sensor_payload->sensor_value);
 		                    /** Translate an SSP touch event into a GUIX event */
 		                   // new_gui_event = ssp_touch_to_guix((sf_touch_panel_payload_t*)p_message, &g_gx_event);
+		                    gx_system_event_send(&g_gx_event);
 		                }
 		                default:
 		                    break;
