@@ -6,7 +6,7 @@
 /*  www.expresslogic.com.                                                      */
 /*                                                                             */
 /*  GUIX Studio Revision 5.4.1.1                                               */
-/*  Date (dd.mm.yyyy): 16. 2.2019   Time (hh:mm): 12:31                        */
+/*  Date (dd.mm.yyyy): 22. 2.2019   Time (hh:mm): 10:48                        */
 /*******************************************************************************/
 
 
@@ -32,13 +32,34 @@ extern   "C" {
 #define PR_DUTY_CYCLE 8
 #define PR_SET_POINT 9
 #define PR_SPEED 10
-#define ID_WINDOW2 11
-#define PR_INFO_VER 12
+#define BTN_ABOUT 11
+#define ID_WINDOW2 12
 #define PR_INFO_DEV 13
-#define BTN_START 14
+#define BTN_BACK 14
 #define ID_WINDOW1 15
-#define PR_DSE_PROJECT 16
 
+#define GX_ACTION_FLAG_DYNAMIC_TARGET 1
+
+typedef struct GX_STUDIO_ACTION_STRUCT
+{
+    GX_UBYTE opcode;
+    GX_UBYTE flags;
+    GX_CONST GX_WIDGET          *parent;
+    GX_CONST VOID               *target;
+    GX_CONST GX_ANIMATION_INFO  *animation;
+} GX_STUDIO_ACTION;
+
+typedef struct GX_STUDIO_EVENT_ENTRY_STRUCT
+{
+    ULONG event_type;
+    GX_CONST GX_STUDIO_ACTION *action_list;
+} GX_STUDIO_EVENT_ENTRY;
+
+typedef struct GX_STUDIO_EVENT_PROCESS_STRUCT 
+{
+    GX_CONST GX_STUDIO_EVENT_ENTRY *event_table;
+    UINT (*chain_event_handler)(GX_WIDGET *, GX_EVENT *);
+} GX_STUDIO_EVENT_PROCESS;
 
 /* Declare properties structures for each utilized widget type                 */
 
@@ -81,6 +102,13 @@ typedef struct
 
 typedef struct
 {
+    GX_RESOURCE_ID normal_pixelmap_id;
+    GX_RESOURCE_ID selected_pixelmap_id;
+    GX_RESOURCE_ID disabled_pixelmap_id;
+} GX_PIXELMAP_BUTTON_PROPERTIES;
+
+typedef struct
+{
     GX_RESOURCE_ID string_id;
     GX_RESOURCE_ID font_id;
     GX_RESOURCE_ID normal_text_color_id;
@@ -99,8 +127,32 @@ typedef struct
 
 typedef struct
 {
+    GX_RESOURCE_ID string_id;
+    GX_RESOURCE_ID font_id;
+    GX_RESOURCE_ID normal_text_color_id;
+    GX_RESOURCE_ID selected_text_color_id;
+    GX_RESOURCE_ID left_map_id;
+    GX_RESOURCE_ID fill_map_id;
+    GX_RESOURCE_ID right_map_id;
+    GX_RESOURCE_ID selected_left_map_id;
+    GX_RESOURCE_ID selected_fill_map_id;
+    GX_RESOURCE_ID selected_right_map_id;
+} GX_PIXELMAP_PROMPT_PROPERTIES;
+
+typedef struct
+{
     GX_RESOURCE_ID wallpaper_id;
 } GX_WINDOW_PROPERTIES;
+
+typedef struct
+{
+    GX_RESOURCE_ID string_id;
+    GX_RESOURCE_ID font_id;
+    GX_RESOURCE_ID normal_text_color_id;
+    GX_RESOURCE_ID selected_text_color_id;
+    GX_BYTE        whitespace;
+    GX_BYTE        line_space;
+} GX_ML_TEXT_VIEW_PROPERTIES;
 
 
 /* Declare top-level control blocks                                            */
@@ -117,20 +169,22 @@ typedef struct WINDOW3_CONTROL_BLOCK_STRUCT
     GX_NUMERIC_PROMPT window3_PR_DUTY_CYCLE;
     GX_NUMERIC_PROMPT window3_PR_SET_POINT;
     GX_NUMERIC_PROMPT window3_PR_SPEED;
+    GX_PIXELMAP_PROMPT window3_prompt_1;
+    GX_PIXELMAP_BUTTON window3_BTN_ABOUT;
+    GX_TEXT_BUTTON window3_button;
 } WINDOW3_CONTROL_BLOCK;
 
 typedef struct WINDOW2_CONTROL_BLOCK_STRUCT
 {
     GX_WINDOW_MEMBERS_DECLARE
-    GX_PROMPT window2_PR_INFO_VER;
-    GX_PROMPT window2_PR_INFO_DEV;
-    GX_TEXT_BUTTON window2_BTN_START;
+    GX_MULTI_LINE_TEXT_VIEW window2_PR_INFO_DEV;
+    GX_MULTI_LINE_TEXT_VIEW window2_text_view;
+    GX_PIXELMAP_BUTTON window2_BTN_BACK;
 } WINDOW2_CONTROL_BLOCK;
 
 typedef struct WINDOW1_CONTROL_BLOCK_STRUCT
 {
     GX_WINDOW_MEMBERS_DECLARE
-    GX_PROMPT window1_PR_DSE_PROJECT;
 } WINDOW1_CONTROL_BLOCK;
 
 
@@ -233,9 +287,12 @@ typedef struct GX_STUDIO_DISPLAY_INFO_STRUCT
 /* Declare Studio-generated functions for creating top-level widgets           */
 
 UINT gx_studio_text_button_create(GX_CONST GX_STUDIO_WIDGET *info, GX_WIDGET *control_block, GX_WIDGET *parent);
+UINT gx_studio_pixelmap_button_create(GX_CONST GX_STUDIO_WIDGET *info, GX_WIDGET *control_block, GX_WIDGET *parent);
 UINT gx_studio_prompt_create(GX_CONST GX_STUDIO_WIDGET *info, GX_WIDGET *control_block, GX_WIDGET *parent);
 UINT gx_studio_numeric_prompt_create(GX_CONST GX_STUDIO_WIDGET *info, GX_WIDGET *control_block, GX_WIDGET *parent);
+UINT gx_studio_pixelmap_prompt_create(GX_CONST GX_STUDIO_WIDGET *info, GX_WIDGET *control_block, GX_WIDGET *parent);
 UINT gx_studio_window_create(GX_CONST GX_STUDIO_WIDGET *info, GX_WIDGET *control_block, GX_WIDGET *parent);
+UINT gx_studio_multi_line_text_view_create(GX_CONST GX_STUDIO_WIDGET *info, GX_WIDGET *control_block, GX_WIDGET *parent);
 GX_WIDGET *gx_studio_widget_create(GX_BYTE *storage, GX_CONST GX_STUDIO_WIDGET *definition, GX_WIDGET *parent);
 UINT gx_studio_named_widget_create(char *name, GX_WIDGET *parent, GX_WIDGET **new_widget);
 UINT gx_studio_display_configure(USHORT display, UINT (*driver)(GX_DISPLAY *), USHORT language, USHORT theme, GX_WINDOW_ROOT **return_root);

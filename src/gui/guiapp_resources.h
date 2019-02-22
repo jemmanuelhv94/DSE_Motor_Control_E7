@@ -6,7 +6,7 @@
 /*  site at www.expresslogic.com.                                              */
 /*                                                                             */
 /*  GUIX Studio Revision 5.4.1.1                                               */
-/*  Date (dd.mm.yyyy): 16. 2.2019   Time (hh:mm): 12:31                        */
+/*  Date (dd.mm.yyyy): 22. 2.2019   Time (hh:mm): 10:48                        */
 /*******************************************************************************/
 
 
@@ -56,7 +56,11 @@
 #define GX_COLOR_ID_SLIDER_NEEDLE_FILL 22
 #define GX_COLOR_ID_SLIDER_NEEDLE_LINE1 23
 #define GX_COLOR_ID_SLIDER_NEEDLE_LINE2 24
-#define DISPLAY_1_COLOR_TABLE_SIZE 25
+#define GX_COLOR_ID_BTN_INC_SELECTED 25
+#define GX_COLOR_ID_BTN_INC_NORMAL 26
+#define GX_COLOR_ID_BTN_DEC_NORMAL 27
+#define GX_COLOR_ID_BTN_DEC_SELECTED 28
+#define DISPLAY_1_COLOR_TABLE_SIZE 29
 
 /* Font ID definitions                                                         */
 
@@ -72,7 +76,15 @@
 #define GX_PIXELMAP_ID_RADIO_OFF 2
 #define GX_PIXELMAP_ID_CHECKBOX_ON 3
 #define GX_PIXELMAP_ID_CHECKBOX_OFF 4
-#define DISPLAY_1_PIXELMAP_TABLE_SIZE 5
+#define GX_PIXELMAP_ID_ABOUT_NORMAL2 5
+#define GX_PIXELMAP_ID_ABOUT_SELECTED2 6
+#define GX_PIXELMAP_ID_CESEQ_PROYECTO 7
+#define GX_PIXELMAP_ID_CLOSE_NORMAL2 8
+#define GX_PIXELMAP_ID_CLOSE_SELECTED2 9
+#define GX_PIXELMAP_ID_VENTILADOR1 10
+#define GX_PIXELMAP_ID_VENTILADOR2 11
+#define GX_PIXELMAP_ID_VENTILADOR3 12
+#define DISPLAY_1_PIXELMAP_TABLE_SIZE 13
 
 /* String Ids                                                                  */
 
@@ -90,6 +102,11 @@
 #define GX_STRING_ID_STRING_4 12
 #define GX_STRING_ID_STRING_5 13
 #define GX_STRING_ID_STRING_6 14
-#define DISPLAY_1_STRING_TABLE_SIZE 15
+#define GX_STRING_ID_STRING_7 15
+#define GX_STRING_ID_LBL_INFO_DEV 16
+#define GX_STRING_ID_LBL_INFO_VER 17
+#define GX_STRING_ID_STRING_10 18
+#define GX_STRING_ID_STRING_8 19
+#define DISPLAY_1_STRING_TABLE_SIZE 20
 
 #endif                                       /* sentry                         */

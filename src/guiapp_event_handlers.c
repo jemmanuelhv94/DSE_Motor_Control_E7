@@ -21,7 +21,7 @@ UINT window1_handler(GX_WINDOW *widget, GX_EVENT *event_ptr)
 
     switch (event_ptr->gx_event_type){
         case GX_EVENT_PEN_UP:
-            show_window((GX_WINDOW*)&window2, (GX_WIDGET*)widget, true);
+            show_window((GX_WINDOW*)&window3, (GX_WIDGET*)widget, true);
             break;
         default:
             result = gx_window_event_process(widget, event_ptr);
@@ -65,7 +65,7 @@ UINT window2_handler(GX_WINDOW *widget, GX_EVENT *event_ptr)
     UINT result = gx_window_event_process(widget, event_ptr);
 
     switch (event_ptr->gx_event_type){
-        case GX_SIGNAL(BTN_START, GX_EVENT_CLICKED):
+        case GX_SIGNAL(BTN_BACK, GX_EVENT_CLICKED):
             show_window((GX_WINDOW*)&window3, (GX_WIDGET*)widget, true);
             break;
         default:
@@ -81,7 +81,7 @@ UINT window3_handler(GX_WINDOW *widget, GX_EVENT *event_ptr)
 
     switch (event_ptr->gx_event_type){
         case GX_SIGNAL(BTN_STOP, GX_EVENT_CLICKED):
-            show_window((GX_WINDOW*)&window2, (GX_WIDGET*)widget, true);
+           // show_window((GX_WINDOW*)&window2, (GX_WIDGET*)widget, true);
             break;
         case GX_SIGNAL(BTN_INC, GX_EVENT_CLICKED):
         set_point=set_point+20;
@@ -90,6 +90,9 @@ UINT window3_handler(GX_WINDOW *widget, GX_EVENT *event_ptr)
         case GX_SIGNAL(BTN_DEC, GX_EVENT_CLICKED):
                 set_point=set_point-20;
         update_numeric(widget->gx_widget_parent, PR_SET_POINT,  set_point);
+        break;
+        case GX_SIGNAL(BTN_ABOUT, GX_EVENT_CLICKED):
+        show_window((GX_WINDOW*)&window2, (GX_WIDGET*)widget, true);
         break;
         default:
             result = gx_window_event_process(widget, event_ptr);

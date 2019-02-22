@@ -25,7 +25,7 @@ void sensor_thread_entry(void)
                pDataPayload = (sensor_payload_t *) pPostBuffer; //cast buffer to our payload
                pDataPayload->header.event_b.class = SF_MESSAGE_EVENT_CLASS_SENSOR; //set the event class
                pDataPayload->header.event_b.class_instance = 0; //set the class instance
-               pDataPayload->header.event_b.code = SF_MESSAGE_EVENT_NEW_DATA; //set the message type
+               pDataPayload->header.event_b.code = SF_MESSAGE_EVENT_SENSOR; //set the message type
 
                pDataPayload->sensor_value=52;
                g_sf_message0.p_api->post(g_sf_message0.p_ctrl, (sf_message_header_t *) pDataPayload,

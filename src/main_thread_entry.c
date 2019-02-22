@@ -163,6 +163,21 @@ void main_thread_entry(void) {
 			}
 			break;
 		}
+		case SF_MESSAGE_EVENT_CLASS_SENSOR:
+		{
+		    switch (p_message->event_b.code)
+		                {
+		                case SF_MESSAGE_EVENT_SENSOR:
+		                {
+		                    /** Translate an SSP touch event into a GUIX event */
+		                   // new_gui_event = ssp_touch_to_guix((sf_touch_panel_payload_t*)p_message, &g_gx_event);
+		                }
+		                default:
+		                    break;
+		                }
+		                break;
+		}
+
 		default:
 			break;
 		}
