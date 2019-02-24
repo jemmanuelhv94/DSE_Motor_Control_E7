@@ -24,6 +24,7 @@ RM := rm -rf
 -include synergy/ssp/src/driver/r_jpeg_common/subdir.mk
 -include synergy/ssp/src/driver/r_ioport/subdir.mk
 -include synergy/ssp/src/driver/r_icu/subdir.mk
+-include synergy/ssp/src/driver/r_gpt/subdir.mk
 -include synergy/ssp/src/driver/r_glcd/subdir.mk
 -include synergy/ssp/src/driver/r_fmi/subdir.mk
 -include synergy/ssp/src/driver/r_elc/subdir.mk
@@ -58,33 +59,33 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 SECONDARY_FLASH += \
-GUIApp.srec \
+DSE_Motor_Control_E7.srec \
 
 SECONDARY_SIZE += \
-GUIApp.siz \
+DSE_Motor_Control_E7.siz \
 
 
 # All Target
-all: GUIApp.elf secondary-outputs
+all: DSE_Motor_Control_E7.elf secondary-outputs
 
 # Tool invocations
-GUIApp.elf: $(OBJS) $(USER_OBJS)
+DSE_Motor_Control_E7.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross ARM C Linker'
-	$(file > GUIApp.elf.in,-mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O2 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wunused -Wuninitialized -Wall -Wextra -Wmissing-declarations -Wconversion -Wpointer-arith -Wshadow -Wlogical-op -Waggregate-return -Wfloat-equal  -g3 -T "C:\\Users\\uriel\\Documents\\GitHub\\DSE_Motor_Control_E7\\script\\S7G2.ld" -Xlinker --gc-sections -L "C:\\Users\\uriel\\Documents\\GitHub\\DSE_Motor_Control_E7\\synergy\\ssp\\src\\framework\\el\\gx\\cm4_gcc" -L "C:\\Users\\uriel\\Documents\\GitHub\\DSE_Motor_Control_E7\\synergy\\ssp\\src\\framework\\el\\tx\\cm4_gcc" -L "C:\\Users\\uriel\\Documents\\GitHub\\DSE_Motor_Control_E7\\synergy\\ssp\\src\\bsp\\cmsis\\DSP_Lib\\cm4_gcc" -Wl,-Map,"GUIApp.map" --specs=rdimon.specs -o "GUIApp.elf" -Wl,--start-group $(OBJS) $(USER_OBJS) $(LIBS) -Wl,--end-group)
-	arm-none-eabi-gcc @"GUIApp.elf.in"
+	$(file > DSE_Motor_Control_E7.elf.in,-mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O2 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wunused -Wuninitialized -Wall -Wextra -Wmissing-declarations -Wconversion -Wpointer-arith -Wshadow -Wlogical-op -Waggregate-return -Wfloat-equal  -g3 -T "C:\\Users\\JHVMEXMM\\e2_studio\\workspace\\DSE_Motor_Control_E7\\script\\S7G2.ld" -Xlinker --gc-sections -L "C:\\Users\\JHVMEXMM\\e2_studio\\workspace\\DSE_Motor_Control_E7\\synergy\\ssp\\src\\framework\\el\\gx\\cm4_gcc" -L "C:\\Users\\JHVMEXMM\\e2_studio\\workspace\\DSE_Motor_Control_E7\\synergy\\ssp\\src\\framework\\el\\tx\\cm4_gcc" -L "C:\\Users\\JHVMEXMM\\e2_studio\\workspace\\DSE_Motor_Control_E7\\synergy\\ssp\\src\\bsp\\cmsis\\DSP_Lib\\cm4_gcc" -Wl,-Map,"DSE_Motor_Control_E7.map" --specs=rdimon.specs -o "DSE_Motor_Control_E7.elf" -Wl,--start-group $(OBJS) $(USER_OBJS) $(LIBS) -Wl,--end-group)
+	arm-none-eabi-gcc @"DSE_Motor_Control_E7.elf.in"
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-GUIApp.srec: GUIApp.elf
+DSE_Motor_Control_E7.srec: DSE_Motor_Control_E7.elf
 	@echo 'Invoking: Cross ARM GNU Create Flash Image'
-	arm-none-eabi-objcopy -O srec "GUIApp.elf"  "GUIApp.srec"
+	arm-none-eabi-objcopy -O srec "DSE_Motor_Control_E7.elf"  "DSE_Motor_Control_E7.srec"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-GUIApp.siz: GUIApp.elf
+DSE_Motor_Control_E7.siz: DSE_Motor_Control_E7.elf
 	@echo 'Invoking: Cross ARM GNU Print Size'
-	arm-none-eabi-size --format=berkeley "GUIApp.elf"
+	arm-none-eabi-size --format=berkeley "DSE_Motor_Control_E7.elf"
 	@echo 'Finished building: $@'
 	@echo ' '
 
@@ -120,7 +121,7 @@ ifneq ($(strip $(C_DEPS)),)
 	-@ xargs -s 6000 -t -a clean_C_DEPS.tmp $(RM)
 	-@$(RM) clean_C_DEPS.tmp
 endif
-	-$(RM)  GUIApp.elf
+	-$(RM)  DSE_Motor_Control_E7.elf
 	-@echo ' '
 
 secondary-outputs: $(SECONDARY_FLASH) $(SECONDARY_SIZE)

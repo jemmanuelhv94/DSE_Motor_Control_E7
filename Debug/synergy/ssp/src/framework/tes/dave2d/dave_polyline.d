@@ -1,13 +1,13 @@
 synergy/ssp/src/framework/tes/dave2d/dave_polyline.o: ../synergy/ssp/src/framework/tes/dave2d/dave_polyline.c \
-C:\\Users\\uriel\\Documents\\GitHub\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes\\dave_driver.h \
-C:\\Users\\uriel\\Documents\\GitHub\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes\\dave_types.h \
-C:\\Users\\uriel\\Documents\\GitHub\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes\\dave_driver.h \
-C:\\Users\\uriel\\Documents\\GitHub\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes/dave_errorcodes.h \
-C:\\Users\\uriel\\Documents\\GitHub\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes\\dave_driver.h \
-C:\\Users\\uriel\\Documents\\GitHub\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes/dave_base.h \
-C:\\Users\\uriel\\Documents\\GitHub\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes\\dave_driver.h \
-C:\\Users\\uriel\\Documents\\GitHub\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes/dave_math.h \
-C:\\Users\\uriel\\Documents\\GitHub\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes\\dave_driver.h \
+C:\\Users\\JHVMEXMM\\e2_studio\\workspace\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes\\dave_driver.h \
+C:\\Users\\JHVMEXMM\\e2_studio\\workspace\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes\\dave_types.h \
+C:\\Users\\JHVMEXMM\\e2_studio\\workspace\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes\\dave_driver.h \
+C:\\Users\\JHVMEXMM\\e2_studio\\workspace\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes/dave_errorcodes.h \
+C:\\Users\\JHVMEXMM\\e2_studio\\workspace\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes\\dave_driver.h \
+C:\\Users\\JHVMEXMM\\e2_studio\\workspace\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes/dave_base.h \
+C:\\Users\\JHVMEXMM\\e2_studio\\workspace\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes\\dave_driver.h \
+C:\\Users\\JHVMEXMM\\e2_studio\\workspace\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes/dave_math.h \
+C:\\Users\\JHVMEXMM\\e2_studio\\workspace\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes\\dave_driver.h \
 ../synergy/ssp/src/framework/tes/dave2d/dave_intern.h \
 ../synergy/ssp/src/framework/tes/dave2d/dave_registermap.h \
 ../synergy/ssp/src/framework/tes/dave2d/dave_intern.h \
@@ -27,23 +27,23 @@ C:\\Users\\uriel\\Documents\\GitHub\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\fr
 ../synergy/ssp/src/framework/tes/dave2d/dave_line.h \
 ../synergy/ssp/src/framework/tes/dave2d/dave_polyline.h
 
-C:\\Users\\uriel\\Documents\\GitHub\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes\\dave_driver.h:
+C:\\Users\\JHVMEXMM\\e2_studio\\workspace\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes\\dave_driver.h:
 
-C:\\Users\\uriel\\Documents\\GitHub\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes\\dave_types.h:
+C:\\Users\\JHVMEXMM\\e2_studio\\workspace\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes\\dave_types.h:
 
-C:\\Users\\uriel\\Documents\\GitHub\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes\\dave_driver.h:
+C:\\Users\\JHVMEXMM\\e2_studio\\workspace\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes\\dave_driver.h:
 
-C:\\Users\\uriel\\Documents\\GitHub\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes/dave_errorcodes.h:
+C:\\Users\\JHVMEXMM\\e2_studio\\workspace\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes/dave_errorcodes.h:
 
-C:\\Users\\uriel\\Documents\\GitHub\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes\\dave_driver.h:
+C:\\Users\\JHVMEXMM\\e2_studio\\workspace\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes\\dave_driver.h:
 
-C:\\Users\\uriel\\Documents\\GitHub\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes/dave_base.h:
+C:\\Users\\JHVMEXMM\\e2_studio\\workspace\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes/dave_base.h:
 
-C:\\Users\\uriel\\Documents\\GitHub\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes\\dave_driver.h:
+C:\\Users\\JHVMEXMM\\e2_studio\\workspace\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes\\dave_driver.h:
 
-C:\\Users\\uriel\\Documents\\GitHub\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes/dave_math.h:
+C:\\Users\\JHVMEXMM\\e2_studio\\workspace\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes/dave_math.h:
 
-C:\\Users\\uriel\\Documents\\GitHub\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes\\dave_driver.h:
+C:\\Users\\JHVMEXMM\\e2_studio\\workspace\\DSE_Motor_Control_E7\\synergy\\ssp\\inc\\framework\\tes\\dave_driver.h:
 
 ../synergy/ssp/src/framework/tes/dave2d/dave_intern.h:
 

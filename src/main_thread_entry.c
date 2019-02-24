@@ -1,4 +1,3 @@
-/* Main Thread entry function */
 #include "main_thread.h"
 #include "bsp_api.h"
 #include "gx_api.h"
@@ -6,20 +5,14 @@
 #include "gui/guiapp_resources.h"
 #include "sensor_api.h"
 #include "guiapp_event_handlers.h"
-
-#if defined(BSP_BOARD_S7G2_SK)
 #include "hardware/lcd.h"
-#endif
 
 /***********************************************************************************************************************
     Private function prototypes
  ***********************************************************************************************************************/
 static bool ssp_touch_to_guix(sf_touch_panel_payload_t * p_touch_payload, GX_EVENT * g_gx_event);
 void main_thread_entry(void);
-
-#if defined(BSP_BOARD_S7G2_SK)
 void g_lcd_spi_callback(spi_callback_args_t * p_args);
-#endif
 
 /***********************************************************************************************************************
     Private global variables
@@ -105,7 +98,6 @@ void main_thread_entry(void) {
         while(1);
     }
 
-#if defined(BSP_BOARD_S7G2_SK)
     /** Open the SPI driver to initialize the LCD (SK-S7G2) **/
     err = g_spi_lcdc.p_api->open(g_spi_lcdc.p_ctrl, (spi_cfg_t *)g_spi_lcdc.p_cfg);
     if (err)
@@ -114,31 +106,6 @@ void main_thread_entry(void) {
     }
     /** Setup the ILI9341V (SK-S7G2) **/
     ILI9341V_Init();
-#endif
-
-    /* Controls the GPIO pin for LCD ON (DK-S7G2, PE-HMI1) */
-#if defined(BSP_BOARD_S7G2_DK)
-    err = g_ioport.p_api->pinWrite(IOPORT_PORT_07_PIN_10, IOPORT_LEVEL_HIGH);
-    if (err)
-    {
-        while(1);
-    }
-#elif defined(BSP_BOARD_S7G2_PE_HMI1)
-    err = g_ioport.p_api->pinWrite(IOPORT_PORT_10_PIN_03, IOPORT_LEVEL_HIGH);
-    if (err)
-    {
-        while(1);
-    }
-#endif
-
-    /* Opens PWM driver and controls the TFT panel back light (DK-S7G2, PE-HMI1) */
-#if defined(BSP_BOARD_S7G2_DK) || defined(BSP_BOARD_S7G2_PE_HMI1)
-    err = g_pwm_backlight.p_api->open(g_pwm_backlight.p_ctrl, g_pwm_backlight.p_cfg);
-    if (err)
-    {
-        while(1);
-    }
-#endif
 
 	while(1)
 	{
@@ -235,21 +202,14 @@ static bool ssp_touch_to_guix(sf_touch_panel_payload_t * p_touch_payload, GX_EVE
 		gx_event->gx_event_display_handle = 0;
 
 		gx_event->gx_event_payload.gx_event_pointdata.gx_point_x = p_touch_payload->x;
-
-#if defined(BSP_BOARD_S7G2_SK)
-		gx_event->gx_event_payload.gx_event_pointdata.gx_point_y = (GX_VALUE)(320 - p_touch_payload->y);  // SK-S7G2
-#else
-		gx_event->gx_event_payload.gx_event_pointdata.gx_point_y = p_touch_payload->y;  // DK-S7G2, PE-HMI1
-#endif
+		gx_event->gx_event_payload.gx_event_pointdata.gx_point_y = (GX_VALUE)(320 - p_touch_payload->y);
 	}
 
 	return send_event;
 }
 
-#if defined(BSP_BOARD_S7G2_SK)
 void g_lcd_spi_callback(spi_callback_args_t * p_args)
 {
     (void)p_args;
     tx_semaphore_ceiling_put(&g_main_semaphore_lcdc, 1);
 }
-#endif
