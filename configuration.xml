@@ -625,6 +625,16 @@
       <property id="module.driver.timer.p_callback" value="Timing_Callback"/>
       <property id="module.driver.timer.irq_ipl" value="board.icu.common.irq.priority0"/>
     </module>
+    <module id="module.driver.external_irq_on_icu.736141783">
+      <property id="module.driver.external_irq.name" value="g_external_irq4"/>
+      <property id="module.driver.external_irq.channel" value="4"/>
+      <property id="module.driver.external_irq.trigger" value="module.driver.external_irq.trigger.trig_both_edge"/>
+      <property id="module.driver.external_irq.filter_enable" value="module.driver.external_irq.filter_enable.false"/>
+      <property id="module.driver.external_irq.pclk_div" value="module.driver.external_irq.pclk_div.pclk_div_by_64"/>
+      <property id="module.driver.external_irq.interrupt_enable" value="module.driver.external_irq.interrupt_enable.true"/>
+      <property id="module.driver.external_irq.p_callback" value="Hall_Sensor_Callback"/>
+      <property id="module.driver.external_irq.irq_ipl" value="board.icu.common.irq.priority12"/>
+    </module>
     <context id="_hal.0">
       <stack module="module.driver.ioport_on_ioport.918725209"/>
       <stack module="module.driver.cgc_on_cgc.1335811009"/>
@@ -686,6 +696,7 @@
       <property id="rtos.threadx.thread.autostart" value="rtos.threadx.thread.autostart.enabled"/>
       <property id="rtos.threadx.thread.timeslice" value="1"/>
       <stack module="module.driver.timer_on_gpt.131107345"/>
+      <stack module="module.driver.external_irq_on_icu.736141783"/>
     </context>
     <config id="config.driver.jpeg_decode">
       <property id="config.driver.jpeg_decode.param_checking_enable" value="config.driver.jpeg_decode.param_checking_enable.enabled"/>

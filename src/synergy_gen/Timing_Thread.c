@@ -7,6 +7,19 @@ static void Timing_Thread_func(ULONG thread_input);
 static uint8_t Timing_Thread_stack[1024] BSP_PLACE_IN_SECTION_V2(".stack.Timing_Thread") BSP_ALIGN_VARIABLE_V2(BSP_STACK_ALIGNMENT);
 void tx_startup_err_callback(void *p_instance, void *p_data);
 void tx_startup_common_init(void);
+#if (12) != BSP_IRQ_DISABLED
+#if !defined(SSP_SUPPRESS_ISR_g_external_irq4) && !defined(SSP_SUPPRESS_ISR_ICU4)
+SSP_VECTOR_DEFINE( icu_irq_isr, ICU, IRQ4);
+#endif
+#endif
+static icu_instance_ctrl_t g_external_irq4_ctrl;
+static const external_irq_cfg_t g_external_irq4_cfg =
+{ .channel = 4, .trigger = EXTERNAL_IRQ_TRIG_BOTH_EDGE, .filter_enable = false, .pclk_div = EXTERNAL_IRQ_PCLK_DIV_BY_64,
+  .autostart = true, .p_callback = Hall_Sensor_Callback, .p_context = &g_external_irq4, .p_extend = NULL, .irq_ipl =
+          (12), };
+/* Instance structure to use this module. */
+const external_irq_instance_t g_external_irq4 =
+{ .p_ctrl = &g_external_irq4_ctrl, .p_cfg = &g_external_irq4_cfg, .p_api = &g_external_irq_on_icu };
 #if (0) != BSP_IRQ_DISABLED
 #if !defined(SSP_SUPPRESS_ISR_g_timer1) && !defined(SSP_SUPPRESS_ISR_GPT0)
 SSP_VECTOR_DEFINE_CHAN(gpt_counter_overflow_isr, GPT, COUNTER_OVERFLOW, 0);

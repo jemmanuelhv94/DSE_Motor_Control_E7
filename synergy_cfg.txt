@@ -703,6 +703,16 @@ Synergy Configuration
       Callback: Timing_Callback
       Overflow Interrupt Priority: Priority 0 (highest)
       
+    Instance "g_external_irq4 External IRQ Driver on r_icu"
+      Name: g_external_irq4
+      Channel: 4
+      Trigger: Both Edges
+      Digital Filtering: Disabled
+      Digital Filtering Sample Clock (Only valid when Digital Filtering is Enabled): PCLK / 64
+      Interrupt enabled after initialization: True
+      Callback: Hall_Sensor_Callback
+      Pin Interrupt Priority: Priority 12
+      
   Messaging
     Event "SENSOR"
       Symbol: SF_MESSAGE_EVENT_SENSOR
