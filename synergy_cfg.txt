@@ -678,9 +678,9 @@ Synergy Configuration
       Callback: clickEvent
       Underflow Interrupt Priority: Priority 3
       
-  Thread "Heartbeat Thread"
-    Symbol: Heartbeat_Thread
-    Name: Heartbeat Thread
+  Thread "Timing Thread"
+    Symbol: Timing_Thread
+    Name: Timing Thread
     Stack size (bytes): 1024
     Priority: 1
     Auto start: Enabled
@@ -692,7 +692,7 @@ Synergy Configuration
       Mode: Periodic
       Duty Cycle Range (only applicable in PWM mode): Shortest: 2 PCLK, Longest: (Period - 1) PCLK
       Period Value: 1
-      Period Unit: Seconds
+      Period Unit: Milliseconds
       Duty Cycle Value: 50
       Duty Cycle Unit: Unit Raw Counts
       Auto Start: True
@@ -700,7 +700,7 @@ Synergy Configuration
       GTIOCA Stop Level: Pin Level Low
       GTIOCB Output Enabled: False
       GTIOCB Stop Level: Pin Level Low
-      Callback: Heartbeat_Callback
+      Callback: Timing_Callback
       Overflow Interrupt Priority: Priority 0 (highest)
       
   Messaging

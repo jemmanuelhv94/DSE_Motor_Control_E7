@@ -614,7 +614,7 @@
       <property id="module.driver.timer.mode" value="module.driver.timer.mode.mode_periodic"/>
       <property id="module.driver.timer.shortest_pwm_signal" value="module.driver.timer.mode.shortest_pwm_signal_disabled"/>
       <property id="module.driver.timer.period" value="1"/>
-      <property id="module.driver.timer.unit" value="module.driver.timer.unit.unit_period_sec"/>
+      <property id="module.driver.timer.unit" value="module.driver.timer.unit.unit_period_msec"/>
       <property id="module.driver.timer.duty_cycle" value="50"/>
       <property id="module.driver.timer.duty_cycle_unit" value="module.driver.timer.duty_cycle_unit.unit_percent"/>
       <property id="module.driver.timer.autostart" value="module.driver.timer.autostart.true"/>
@@ -622,7 +622,7 @@
       <property id="module.driver.timer.gtioca_stop_level" value="module.driver.timer.gtioca_stop_level.pin_level_low"/>
       <property id="module.driver.timer.gtiocb_output_enabled" value="module.driver.timer.gtiocb_output_enabled.false"/>
       <property id="module.driver.timer.gtiocb_stop_level" value="module.driver.timer.gtiocb_stop_level.pin_level_low"/>
-      <property id="module.driver.timer.p_callback" value="Heartbeat_Callback"/>
+      <property id="module.driver.timer.p_callback" value="Timing_Callback"/>
       <property id="module.driver.timer.irq_ipl" value="board.icu.common.irq.priority0"/>
     </module>
     <context id="_hal.0">
@@ -679,8 +679,8 @@
       <stack module="module.driver.timer_on_agt.844454336"/>
     </context>
     <context id="rtos.threadx.thread.299794772">
-      <property id="_symbol" value="Heartbeat_Thread"/>
-      <property id="rtos.threadx.thread.name" value="Heartbeat Thread"/>
+      <property id="_symbol" value="Timing_Thread"/>
+      <property id="rtos.threadx.thread.name" value="Timing Thread"/>
       <property id="rtos.threadx.thread.stack" value="1024"/>
       <property id="rtos.threadx.thread.priority" value="1"/>
       <property id="rtos.threadx.thread.autostart" value="rtos.threadx.thread.autostart.enabled"/>

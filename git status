@@ -1,0 +1,55 @@
+[33mcommit b2873d516dacfc91f2975234631b05899a3f4acc[m[33m ([m[1;36mHEAD -> [m[1;32memmanuel[m[33m, [m[1;31morigin/emmanuel[m[33m)[m
+Author: jemmanuelhv94 <jose.hernandez.dse@uteq.edu.mx>
+Date:   Sun Feb 24 15:41:16 2019 -0600
+
+    Configuración de LED para Heartbeat
+
+[33mcommit 6611de2cb26ee45310d24c836328e5e4a1edaaa6[m[33m ([m[1;31morigin/hugo[m[33m, [m[1;32mhugo[m[33m)[m
+Author: dj4j2t <43073876+dj4j2t@users.noreply.github.com>
+Date:   Fri Feb 22 16:59:30 2019 -0600
+
+    task_experimental_HMI
+
+[33mcommit 59c7ae04b7e47810044ff02d3890cc20dd23ac56[m
+Author: dj4j2t <43073876+dj4j2t@users.noreply.github.com>
+Date:   Fri Feb 22 10:58:09 2019 -0600
+
+    task_improving_HMI
+
+[33mcommit 2fff93de182beffa2453c4b897b3a24fc2b11728[m
+Author: dj4j2t <43073876+dj4j2t@users.noreply.github.com>
+Date:   Sat Feb 16 12:38:09 2019 -0600
+
+    task_creating_template_HMI
+    
+    sw_HMI_VER2
+
+[33mcommit 633a4609413f1dc14ccd8f98384a3298af16416d[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: jemmanuelhv94 <jose.hernandez.dse@uteq.edu.mx>
+Date:   Thu Jan 24 18:40:09 2019 -0600
+
+    Modificación de prueba en pantalla 2 de LCD
+
+[33mcommit 79474ddf1ce4fe2fab76c1304351bf7437f4e3a3[m
+Author: jemmanuelhv94 <jose.hernandez.dse@uteq.edu.mx>
+Date:   Thu Jan 24 18:34:52 2019 -0600
+
+    Se agregan extensiones .elf .map .srec .o y .gxp
+
+[33mcommit 0c3e68334056d6f93a8509d73bfe1bde3f3327fa[m
+Author: jemmanuelhv94 <jose.hernandez.dse@uteq.edu.mx>
+Date:   Thu Jan 24 18:30:36 2019 -0600
+
+    Se agrega carpeta .settings
+
+[33mcommit 4e03d0adae49760273322d924e9344a44b6d840f[m
+Author: jemmanuelhv94 <jose.hernandez.dse@uteq.edu.mx>
+Date:   Thu Jan 24 17:38:27 2019 -0600
+
+    Se agrega archivo ignore
+
+[33mcommit de9e1623d5779d1279e38b15f8d6e1542c29d8f8[m
+Author: jemmanuelhv94 <jose.hernandez.dse@uteq.edu.mx>
+Date:   Mon Jan 21 18:44:33 2019 -0600
+
+    Proyecto base LCD
