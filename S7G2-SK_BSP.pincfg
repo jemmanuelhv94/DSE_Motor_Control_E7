@@ -917,4 +917,16 @@
     <v1:connectionSetting altId="usbfs0.usbdp.usbdp"/>
   </v1:configSetting>
   <v1:configSetting configurationId="gpt0.mode" altId="gpt0.mode.gtiocaorgtiocb.free"/>
+  <v1:configSetting configurationId="gpt9.mode" altId="gpt9.mode.gtiocaorgtiocb.free"/>
+  <v1:configSetting configurationId="p411.gpio_mode" altId="p411.gpio_mode.gpio_mode_peripheral"/>
+  <v1:configSetting configurationId="p411" altId="p411.gpt9.gtioca">
+    <v1:connectionSetting altId="gpt9.gtioca.p411"/>
+  </v1:configSetting>
+  <v1:configSetting configurationId="gpt9.gtioca" altId="gpt9.gtioca.p411">
+    <v1:connectionSetting altId="p411.gpt9.gtioca"/>
+  </v1:configSetting>
+  <v1:configSetting configurationId="p411.gpio_drivecapacity" altId="p411.gpio_speed.gpio_speed_medium"/>
+  <v1:configSetting configurationId="p114.gpio_mode" altId="p114.gpio_mode.gpio_mode_out.low"/>
+  <v1:configSetting configurationId="p114.gpio_drivecapacity" altId="p114.gpio_speed.gpio_speed_high"/>
+  <v1:configSetting configurationId="p114" altId="p114.output.low"/>
 </v1:pinSettings>
