@@ -207,12 +207,14 @@
   <synergyMessagingConfiguration>
     <event display="SENSOR" value="SF_MESSAGE_EVENT_SENSOR"/>
     <eventClass display="SENSOR" header="sensor_api.h" id="eventClass.862914249" payload="sensor_payload" payloadType="sensor_payload_t" value="SF_MESSAGE_EVENT_CLASS_SENSOR"/>
-    <subscriber context="rtos.threadx.thread.239426899" end="0" id="subscriber.859390088" start="0">
+    <eventClass display="CONTROL" header="control_api.h" id="eventClass.257567828" payload="control_payload" payloadType="control_payload_t" value="SF_MESSAGE_EVENT_CLASS_CONTROL"/>
+    <subscriber context="rtos.threadx.thread.239426899" end="1" id="subscriber.622078918" start="0">
       <subscribe eventClass="module.framework.sf_touch_panel.eventClass.eventClassTouch"/>
       <subscribe eventClass="eventClass.862914249"/>
+      <subscribe eventClass="eventClass.257567828"/>
     </subscriber>
-    <subscriber context="rtos.threadx.thread.1801288208" end="1" id="subscriber.542752993" start="0">
-      <subscribe eventClass="eventClass.862914249"/>
+    <subscriber context="rtos.threadx.thread.770899866" end="2" id="subscriber.349158778" start="2">
+      <subscribe eventClass="eventClass.257567828"/>
     </subscriber>
   </synergyMessagingConfiguration>
   <synergyModuleConfiguration>
@@ -656,6 +658,14 @@
       <property id="rtos.threadx.thread.autostart" value="rtos.threadx.thread.autostart.enabled"/>
       <property id="rtos.threadx.thread.timeslice" value="1"/>
       <stack module="module.driver.timer_on_agt.844454336"/>
+    </context>
+    <context id="rtos.threadx.thread.770899866">
+      <property id="_symbol" value="control_thread"/>
+      <property id="rtos.threadx.thread.name" value="Control Thread"/>
+      <property id="rtos.threadx.thread.stack" value="1024"/>
+      <property id="rtos.threadx.thread.priority" value="1"/>
+      <property id="rtos.threadx.thread.autostart" value="rtos.threadx.thread.autostart.enabled"/>
+      <property id="rtos.threadx.thread.timeslice" value="1"/>
     </context>
     <config id="config.driver.jpeg_decode">
       <property id="config.driver.jpeg_decode.param_checking_enable" value="config.driver.jpeg_decode.param_checking_enable.enabled"/>

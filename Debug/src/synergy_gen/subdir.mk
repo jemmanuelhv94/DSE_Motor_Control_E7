@@ -5,6 +5,7 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../src/synergy_gen/common_data.c \
+../src/synergy_gen/control_thread.c \
 ../src/synergy_gen/hal_data.c \
 ../src/synergy_gen/main.c \
 ../src/synergy_gen/main_thread.c \
@@ -14,6 +15,7 @@ C_SRCS += \
 
 OBJS += \
 ./src/synergy_gen/common_data.o \
+./src/synergy_gen/control_thread.o \
 ./src/synergy_gen/hal_data.o \
 ./src/synergy_gen/main.o \
 ./src/synergy_gen/main_thread.o \
@@ -23,6 +25,7 @@ OBJS += \
 
 C_DEPS += \
 ./src/synergy_gen/common_data.d \
+./src/synergy_gen/control_thread.d \
 ./src/synergy_gen/hal_data.d \
 ./src/synergy_gen/main.d \
 ./src/synergy_gen/main_thread.d \

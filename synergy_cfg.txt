@@ -675,6 +675,14 @@ Synergy Configuration
       Callback: clickEvent
       Underflow Interrupt Priority: Priority 3
       
+  Thread "Control Thread"
+    Symbol: control_thread
+    Name: Control Thread
+    Stack size (bytes): 1024
+    Priority: 1
+    Auto start: Enabled
+    Time slicing interval (ticks): 1
+    
   Messaging
     Event "SENSOR"
       Symbol: SF_MESSAGE_EVENT_SENSOR
@@ -687,10 +695,18 @@ Synergy Configuration
       Payload: sensor_payload
       Payload type: sensor_payload_t
       
-    Subscriber "Main Thread" 0 0
+    Event Class "CONTROL"
+      Symbol: SF_MESSAGE_EVENT_CLASS_CONTROL
+      Name: CONTROL
+      Payload header file: control_api.h
+      Payload: control_payload
+      Payload type: control_payload_t
+      
+    Subscriber "Main Thread" 0 1
       Event Class "Touch"
       Event Class "SENSOR"
+      Event Class "CONTROL"
       
-    Subscriber "Sensor Thread" 0 1
-      Event Class "SENSOR"
+    Subscriber "Control Thread" 2 2
+      Event Class "CONTROL"
       

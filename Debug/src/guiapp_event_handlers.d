@@ -65,6 +65,7 @@ src/guiapp_event_handlers.o: ../src/guiapp_event_handlers.c \
  C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\framework\api/sf_touch_panel_api.h \
  C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\framework\api/sensor_api.h \
  C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\framework\api/sf_message_api.h \
+ C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\framework\api/control_api.h \
  C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\driver\instances/r_jpeg_decode.h \
  C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\driver\api/r_jpeg_decode_api.h \
  C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy_cfg\ssp_cfg\driver/r_jpeg_decode_cfg.h \
@@ -232,6 +233,8 @@ C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\framework\a
 C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\framework\api/sensor_api.h:
 
 C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\framework\api/sf_message_api.h:
+
+C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\framework\api/control_api.h:
 
 C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\driver\instances/r_jpeg_decode.h:
 
