@@ -702,11 +702,20 @@ Synergy Configuration
       Payload: control_payload
       Payload type: control_payload_t
       
+    Event Class "SPEED"
+      Symbol: SF_MESSAGE_EVENT_CLASS_SPEED
+      Name: SPEED
+      Payload header file: speed_api.h
+      Payload: speed_payload
+      Payload type: speed_payload_t
+      
     Subscriber "Main Thread" 0 1
       Event Class "Touch"
       Event Class "SENSOR"
       Event Class "CONTROL"
+      Event Class "SPEED"
       
     Subscriber "Control Thread" 2 2
       Event Class "CONTROL"
+      Event Class "SPEED"
       

@@ -13,6 +13,8 @@ static void update_numeric(GX_WIDGET * p_widget, GX_RESOURCE_ID id, int numeric)
 
 int set_point=0;
 
+bool flag_activate=false;
+
 UINT window1_handler(GX_WINDOW *widget, GX_EVENT *event_ptr)
 {
     UINT result = gx_window_event_process(widget, event_ptr);
@@ -50,15 +52,20 @@ UINT window3_handler(GX_WINDOW *widget, GX_EVENT *event_ptr)
     switch (event_ptr->gx_event_type){
         case GX_SIGNAL(BTN_STOP, GX_EVENT_CLICKED):
            // show_window((GX_WINDOW*)&window2, (GX_WIDGET*)widget, true);
+                   flag_activate=false;
+            break;
+        case GX_SIGNAL(BTN_START, GX_EVENT_CLICKED):
+           // show_window((GX_WINDOW*)&window2, (GX_WIDGET*)widget, true);
+                   flag_activate=true;
             break;
         case GX_SIGNAL(BTN_INC, GX_EVENT_CLICKED):
         set_point=set_point+20;
-        update_duty_cycle(set_point);
+       // update_duty_cycle(set_point);
         update_numeric(widget->gx_widget_parent, PR_SET_POINT,  set_point);
         break;
         case GX_SIGNAL(BTN_DEC, GX_EVENT_CLICKED):
                 set_point=set_point-20;
-        update_duty_cycle(set_point);
+        //update_duty_cycle(set_point);
         update_numeric(widget->gx_widget_parent, PR_SET_POINT,  set_point);
         break;
         case GX_SIGNAL(BTN_ABOUT, GX_EVENT_CLICKED):
@@ -128,6 +135,16 @@ void update_duty_cycle(int duty_cycle)
 void update_speed(int speed)
 {
     update_numeric((GX_WIDGET*)&window3,PR_SPEED,speed);
+}
+
+int get_set_point()
+{
+    return set_point;
+}
+
+bool get_flag()
+{
+    return flag_activate;
 }
 
 void update_ventilador_2()

@@ -10,6 +10,11 @@
 
 void update_duty_cycle(int duty_cycle);
 void update_ventilador_2();
+void update_speed(int speed);
+int get_set_point();
+bool get_flag();
+
+
 
 
 

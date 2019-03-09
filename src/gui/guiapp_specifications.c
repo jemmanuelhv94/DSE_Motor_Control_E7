@@ -6,7 +6,7 @@
 /*  www.expresslogic.com.                                                      */
 /*                                                                             */
 /*  GUIX Studio Revision 5.4.1.1                                               */
-/*  Date (dd.mm.yyyy): 22. 2.2019   Time (hh:mm): 16:54                        */
+/*  Date (dd.mm.yyyy):  8. 3.2019   Time (hh:mm): 01:12                        */
 /*******************************************************************************/
 
 
@@ -412,7 +412,7 @@ GX_PIXELMAP_BUTTON_PROPERTIES window3_BTN_ABOUT_properties =
     GX_PIXELMAP_ID_ABOUT_SELECTED2,          /* selected pixelmap id           */
     0                                        /* disabled pixelmap id           */
 };
-GX_TEXT_BUTTON_PROPERTIES window3_button_properties =
+GX_TEXT_BUTTON_PROPERTIES window3_BTN_START_properties =
 {
     GX_STRING_ID_LBL_START,                  /* string id                      */
     GX_FONT_ID_BUTTON,                       /* font id                        */
@@ -420,11 +420,11 @@ GX_TEXT_BUTTON_PROPERTIES window3_button_properties =
     GX_COLOR_ID_BTN_TEXT                     /* selected text color            */
 };
 
-GX_CONST GX_STUDIO_WIDGET window3_button_define =
+GX_CONST GX_STUDIO_WIDGET window3_BTN_START_define =
 {
-    "button",
+    "BTN_START",
     GX_TYPE_TEXT_BUTTON,                     /* widget type                    */
-    GX_ID_NONE,                              /* widget id                      */
+    BTN_START,                               /* widget id                      */
     #if defined(GX_WIDGET_USER_DATA)
     0,                                       /* user data                      */
     #endif
@@ -439,8 +439,8 @@ GX_CONST GX_STUDIO_WIDGET window3_button_define =
     {136, 258, 235, 312},                    /* widget size                    */
     GX_NULL,                                 /* no next widget                 */
     GX_NULL,                                 /* no child widgets               */ 
-    offsetof(WINDOW3_CONTROL_BLOCK, window3_button), /* control block          */
-    (void *) &window3_button_properties      /* extended properties            */
+    offsetof(WINDOW3_CONTROL_BLOCK, window3_BTN_START), /* control block       */
+    (void *) &window3_BTN_START_properties   /* extended properties            */
 };
 
 GX_CONST GX_STUDIO_WIDGET window3_BTN_ABOUT_define =
@@ -460,7 +460,7 @@ GX_CONST GX_STUDIO_WIDGET window3_BTN_ABOUT_define =
     GX_NULL,                                 /* drawing function override      */
     GX_NULL,                                 /* event function override        */
     {201, 9, 240, 48},                       /* widget size                    */
-    &window3_button_define,                  /* next widget definition         */
+    &window3_BTN_START_define,               /* next widget definition         */
     GX_NULL,                                 /* no child widgets               */ 
     offsetof(WINDOW3_CONTROL_BLOCK, window3_BTN_ABOUT), /* control block       */
     (void *) &window3_BTN_ABOUT_properties   /* extended properties            */

@@ -6,6 +6,7 @@ typedef enum e_sf_message_event_class
     SF_MESSAGE_EVENT_CLASS_TOUCH, /* Touch */
     SF_MESSAGE_EVENT_CLASS_SENSOR, /* SENSOR */
     SF_MESSAGE_EVENT_CLASS_CONTROL, /* CONTROL */
+    SF_MESSAGE_EVENT_CLASS_SPEED, /* SPEED */
 } sf_message_event_class_t;
 typedef enum e_sf_message_event
 {

@@ -28,9 +28,14 @@ static sf_message_subscriber_t *gp_group_SF_MESSAGE_EVENT_CLASS_CONTROL[] =
 static sf_message_subscriber_list_t g_list_SF_MESSAGE_EVENT_CLASS_CONTROL =
 { .event_class = SF_MESSAGE_EVENT_CLASS_CONTROL, .number_of_nodes = 2, .pp_subscriber_group =
           gp_group_SF_MESSAGE_EVENT_CLASS_CONTROL };
+static sf_message_subscriber_t *gp_group_SF_MESSAGE_EVENT_CLASS_SPEED[] =
+{ &main_thread_message_queue_0_1, &control_thread_message_queue_2_2, };
+static sf_message_subscriber_list_t g_list_SF_MESSAGE_EVENT_CLASS_SPEED =
+{ .event_class = SF_MESSAGE_EVENT_CLASS_SPEED, .number_of_nodes = 2, .pp_subscriber_group =
+          gp_group_SF_MESSAGE_EVENT_CLASS_SPEED };
 sf_message_subscriber_list_t *p_subscriber_lists[] =
 { &g_list_SF_MESSAGE_EVENT_CLASS_TOUCH, &g_list_SF_MESSAGE_EVENT_CLASS_SENSOR, &g_list_SF_MESSAGE_EVENT_CLASS_CONTROL,
-  NULL };
+  &g_list_SF_MESSAGE_EVENT_CLASS_SPEED, NULL };
 void g_message_init(void);
 void g_message_init(void)
 {

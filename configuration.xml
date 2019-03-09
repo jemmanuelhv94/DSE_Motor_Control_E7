@@ -208,13 +208,16 @@
     <event display="SENSOR" value="SF_MESSAGE_EVENT_SENSOR"/>
     <eventClass display="SENSOR" header="sensor_api.h" id="eventClass.862914249" payload="sensor_payload" payloadType="sensor_payload_t" value="SF_MESSAGE_EVENT_CLASS_SENSOR"/>
     <eventClass display="CONTROL" header="control_api.h" id="eventClass.257567828" payload="control_payload" payloadType="control_payload_t" value="SF_MESSAGE_EVENT_CLASS_CONTROL"/>
+    <eventClass display="SPEED" header="speed_api.h" id="eventClass.755115123" payload="speed_payload" payloadType="speed_payload_t" value="SF_MESSAGE_EVENT_CLASS_SPEED"/>
     <subscriber context="rtos.threadx.thread.239426899" end="1" id="subscriber.622078918" start="0">
       <subscribe eventClass="module.framework.sf_touch_panel.eventClass.eventClassTouch"/>
       <subscribe eventClass="eventClass.862914249"/>
       <subscribe eventClass="eventClass.257567828"/>
+      <subscribe eventClass="eventClass.755115123"/>
     </subscriber>
     <subscriber context="rtos.threadx.thread.770899866" end="2" id="subscriber.349158778" start="2">
       <subscribe eventClass="eventClass.257567828"/>
+      <subscribe eventClass="eventClass.755115123"/>
     </subscriber>
   </synergyMessagingConfiguration>
   <synergyModuleConfiguration>

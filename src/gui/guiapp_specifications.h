@@ -6,7 +6,7 @@
 /*  www.expresslogic.com.                                                      */
 /*                                                                             */
 /*  GUIX Studio Revision 5.4.1.1                                               */
-/*  Date (dd.mm.yyyy): 22. 2.2019   Time (hh:mm): 16:54                        */
+/*  Date (dd.mm.yyyy):  8. 3.2019   Time (hh:mm): 01:12                        */
 /*******************************************************************************/
 
 
@@ -34,10 +34,11 @@ extern   "C" {
 #define PR_SPEED 10
 #define PR_VENTILADOR 11
 #define BTN_ABOUT 12
-#define ID_WINDOW2 13
-#define PR_INFO_DEV 14
-#define BTN_BACK 15
-#define ID_WINDOW1 16
+#define BTN_START 13
+#define ID_WINDOW2 14
+#define PR_INFO_DEV 15
+#define BTN_BACK 16
+#define ID_WINDOW1 17
 
 #define GX_ACTION_FLAG_DYNAMIC_TARGET 1
 
@@ -172,7 +173,7 @@ typedef struct WINDOW3_CONTROL_BLOCK_STRUCT
     GX_NUMERIC_PROMPT window3_PR_SPEED;
     GX_PIXELMAP_PROMPT window3_PR_VENTILADOR;
     GX_PIXELMAP_BUTTON window3_BTN_ABOUT;
-    GX_TEXT_BUTTON window3_button;
+    GX_TEXT_BUTTON window3_BTN_START;
 } WINDOW3_CONTROL_BLOCK;
 
 typedef struct WINDOW2_CONTROL_BLOCK_STRUCT

@@ -6,12 +6,10 @@
 /* Sensor Thread entry function */
 void sensor_thread_entry(void)
 {
-
-
     //Message init
           //sending sensordata init
           sf_message_header_t * pPostBuffer; //pointer for the buffer that must be acquired
-          sf_message_acquire_cfg_t acquireCfg = {.buffer_keep =true}; //do not keep the buffer, other threads need it
+          sf_message_acquire_cfg_t acquireCfg = {.buffer_keep =false}; //do not keep the buffer, other threads need it
           ssp_err_t errorBuff; //place for error codes from buffer acquisition to go
           sf_message_post_err_t errPost; //place for posting error codes to go
           sf_message_post_cfg_t post_cfg =
@@ -23,7 +21,7 @@ void sensor_thread_entry(void)
        /* TODO: add your own code here */
        while (1)
        {
-           errorBuff = g_sf_message0.p_api->bufferAcquire(g_sf_message0.p_ctrl, &pPostBuffer, &acquireCfg, 0);
+           errorBuff = g_sf_message0.p_api->bufferAcquire(g_sf_message0.p_ctrl, &pPostBuffer, &acquireCfg, TX_WAIT_FOREVER);
            if (errorBuff==SSP_SUCCESS)
            {
                pDataPayload = (sensor_payload_t *) pPostBuffer; //cast buffer to our payload

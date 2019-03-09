@@ -5,6 +5,7 @@
 #include "gui/guiapp_specifications.h"
 #include "gui/guiapp_resources.h"
 #include "sensor_api.h"
+#include "control_api.h"
 #include "guiapp_event_handlers.h"
 
 #if defined(BSP_BOARD_S7G2_SK)
@@ -37,6 +38,20 @@ void main_thread_entry(void) {
 	sf_message_header_t * p_message = NULL;
 	UINT      status = TX_SUCCESS;
 	sensor_payload_t* sensor_payload;
+	control_payload_t* control_payload;
+    speed_payload_t* speed_payload;
+
+
+    sf_message_header_t * pPostBuffer; //pointer for the buffer that must be acquired
+    sf_message_acquire_cfg_t acquireCfg = {.buffer_keep =false}; //do not keep the buffer, other threads need it
+    ssp_err_t errorBuff; //place for error codes from buffer acquisition to go
+    sf_message_post_err_t errPost; //place for posting error codes to go
+    sf_message_post_cfg_t post_cfg =
+    {
+      .priority = SF_MESSAGE_PRIORITY_NORMAL, //normal priority
+      .p_callback = NULL //no callback needed
+    };
+    control_payload_t * pDataPayload; //pointer to data to be sent to uart
 
     /* Initializes GUIX. */
     status = gx_system_initialize();
@@ -184,6 +199,23 @@ void main_thread_entry(void) {
 		                }
 		                break;
 		}
+        case SF_MESSAGE_EVENT_CLASS_SPEED:
+        {
+            speed_payload = (speed_payload_t *) p_message;
+            switch (p_message->event_b.code)
+                        {
+                        case SF_MESSAGE_EVENT_NEW_DATA:
+                        {
+                            update_speed(speed_payload->speed_value);
+                            /** Translate an SSP touch event into a GUIX event */
+                           // new_gui_event = ssp_touch_to_guix((sf_touch_panel_payload_t*)p_message, &g_gx_event);
+                            gx_system_event_send(&g_gx_event);
+                        }
+                        default:
+                            break;
+                        }
+                        break;
+        }
 
 		default:
 			break;
@@ -192,6 +224,8 @@ void main_thread_entry(void) {
 		/** Message is processed, so release buffer. */
 		err = g_sf_message0.p_api->bufferRelease(g_sf_message0.p_ctrl, (sf_message_header_t *) p_message, SF_MESSAGE_RELEASE_OPTION_FORCED_RELEASE);
 		
+
+
 		if (err)
 		{
 			/** TODO: Handle error. */
@@ -201,6 +235,20 @@ void main_thread_entry(void) {
 		if (new_gui_event) {
 			gx_system_event_send(&g_gx_event);
 		}
+
+        errorBuff = g_sf_message0.p_api->bufferAcquire(g_sf_message0.p_ctrl, &pPostBuffer, &acquireCfg, TX_NO_WAIT);
+        if (errorBuff==SSP_SUCCESS)
+        {
+            pDataPayload = (control_payload_t *) pPostBuffer; //cast buffer to our payload
+            pDataPayload->header.event_b.class = SF_MESSAGE_EVENT_CLASS_CONTROL; //set the event class
+            pDataPayload->header.event_b.class_instance = 2; //set the class instance
+            pDataPayload->header.event_b.code = SF_MESSAGE_EVENT_NEW_DATA; //set the message type
+            pDataPayload->set_point=get_set_point();
+            pDataPayload->activate=get_flag();
+            g_sf_message0.p_api->post(g_sf_message0.p_ctrl, (sf_message_header_t *) pDataPayload,
+                                      &post_cfg, &errPost, TX_NO_WAIT); //post the message
+               }
+      //  tx_thread_sleep (10);
 	}
 }
 
