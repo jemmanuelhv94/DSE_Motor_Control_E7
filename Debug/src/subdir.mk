@@ -5,6 +5,9 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../src/Hall\ Sensor.c \
+../src/Input_Capture_Thread_entry.c \
+../src/PWM_Thread_entry.c \
+../src/Ram.c \
 ../src/Timing_Thread_entry.c \
 ../src/guiapp_event_handlers.c \
 ../src/hal_entry.c \
@@ -13,6 +16,9 @@ C_SRCS += \
 
 OBJS += \
 ./src/Hall\ Sensor.o \
+./src/Input_Capture_Thread_entry.o \
+./src/PWM_Thread_entry.o \
+./src/Ram.o \
 ./src/Timing_Thread_entry.o \
 ./src/guiapp_event_handlers.o \
 ./src/hal_entry.o \
@@ -21,6 +27,9 @@ OBJS += \
 
 C_DEPS += \
 ./src/Hall\ Sensor.d \
+./src/Input_Capture_Thread_entry.d \
+./src/PWM_Thread_entry.d \
+./src/Ram.d \
 ./src/Timing_Thread_entry.d \
 ./src/guiapp_event_handlers.d \
 ./src/hal_entry.d \

@@ -206,6 +206,10 @@
       <description>General Purpose Timer: Provides=[Timer ,GPT]</description>
       <originalPack>Renesas.Synergy.1.5.0.pack</originalPack>
     </component>
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_gpt_input_capture" variant="" vendor="Renesas" version="1.5.0">
+      <description>Timer Input Capture: Provides=[Input Capture] , Requires=[GPT]</description>
+      <originalPack>Renesas.Synergy.1.5.0.pack</originalPack>
+    </component>
   </synergyComponentSelection>
   <synergyIcuConfiguration/>
   <synergyMessagingConfiguration>
@@ -613,8 +617,8 @@
       <property id="module.driver.timer.channel" value="0"/>
       <property id="module.driver.timer.mode" value="module.driver.timer.mode.mode_periodic"/>
       <property id="module.driver.timer.shortest_pwm_signal" value="module.driver.timer.mode.shortest_pwm_signal_disabled"/>
-      <property id="module.driver.timer.period" value="1"/>
-      <property id="module.driver.timer.unit" value="module.driver.timer.unit.unit_period_msec"/>
+      <property id="module.driver.timer.period" value="100"/>
+      <property id="module.driver.timer.unit" value="module.driver.timer.unit.unit_period_usec"/>
       <property id="module.driver.timer.duty_cycle" value="50"/>
       <property id="module.driver.timer.duty_cycle_unit" value="module.driver.timer.duty_cycle_unit.unit_percent"/>
       <property id="module.driver.timer.autostart" value="module.driver.timer.autostart.true"/>
@@ -623,25 +627,15 @@
       <property id="module.driver.timer.gtiocb_output_enabled" value="module.driver.timer.gtiocb_output_enabled.false"/>
       <property id="module.driver.timer.gtiocb_stop_level" value="module.driver.timer.gtiocb_stop_level.pin_level_low"/>
       <property id="module.driver.timer.p_callback" value="Timing_Callback"/>
-      <property id="module.driver.timer.irq_ipl" value="board.icu.common.irq.priority0"/>
+      <property id="module.driver.timer.irq_ipl" value="board.icu.common.irq.priority2"/>
     </module>
-    <module id="module.driver.external_irq_on_icu.736141783">
-      <property id="module.driver.external_irq.name" value="g_external_irq4"/>
-      <property id="module.driver.external_irq.channel" value="4"/>
-      <property id="module.driver.external_irq.trigger" value="module.driver.external_irq.trigger.trig_both_edge"/>
-      <property id="module.driver.external_irq.filter_enable" value="module.driver.external_irq.filter_enable.true"/>
-      <property id="module.driver.external_irq.pclk_div" value="module.driver.external_irq.pclk_div.pclk_div_by_64"/>
-      <property id="module.driver.external_irq.interrupt_enable" value="module.driver.external_irq.interrupt_enable.true"/>
-      <property id="module.driver.external_irq.p_callback" value="Hall_Sensor_Callback"/>
-      <property id="module.driver.external_irq.irq_ipl" value="board.icu.common.irq.priority12"/>
-    </module>
-    <module id="module.driver.timer_on_gpt.1791548251">
+    <module id="module.driver.timer_on_gpt.532993844">
       <property id="module.driver.timer.name" value="g_timer9"/>
       <property id="module.driver.timer.channel" value="9"/>
       <property id="module.driver.timer.mode" value="module.driver.timer.mode.mode_pwm"/>
       <property id="module.driver.timer.shortest_pwm_signal" value="module.driver.timer.mode.shortest_pwm_signal_disabled"/>
-      <property id="module.driver.timer.period" value="100"/>
-      <property id="module.driver.timer.unit" value="module.driver.timer.unit.unit_period_usec"/>
+      <property id="module.driver.timer.period" value="1"/>
+      <property id="module.driver.timer.unit" value="module.driver.timer.unit.unit_period_msec"/>
       <property id="module.driver.timer.duty_cycle" value="50"/>
       <property id="module.driver.timer.duty_cycle_unit" value="module.driver.timer.unit.unit_percent"/>
       <property id="module.driver.timer.autostart" value="module.driver.timer.autostart.true"/>
@@ -650,7 +644,23 @@
       <property id="module.driver.timer.gtiocb_output_enabled" value="module.driver.timer.gtiocb_output_enabled.false"/>
       <property id="module.driver.timer.gtiocb_stop_level" value="module.driver.timer.gtiocb_stop_level.pin_level_low"/>
       <property id="module.driver.timer.p_callback" value="timer9_callback"/>
-      <property id="module.driver.timer.irq_ipl" value="board.icu.common.irq.priority0"/>
+      <property id="module.driver.timer.irq_ipl" value="board.icu.common.irq.priority2"/>
+    </module>
+    <module id="module.driver.input_capture_on_gpt.349187557">
+      <property id="module.driver.input_capture.name" value="g_input_capture"/>
+      <property id="module.driver.input_capture.channel" value="2"/>
+      <property id="module.driver.input_capture.mode" value="module.driver.input_capture.mode.period"/>
+      <property id="module.driver.input_capture.signal_edge" value="module.driver.input_capture.signal_edge.rising"/>
+      <property id="module.driver.input_capture.repetition" value="module.driver.input_capture.repetition.periodic"/>
+      <property id="module.driver.input_capture.autostart" value="module.driver.input_capture.autostart.false"/>
+      <property id="module.driver.input_capture.p_callback" value="input_capture_callback"/>
+      <property id="module.driver.input_capture.signal" value="module.driver.input_capture.signal.gtioca"/>
+      <property id="module.driver.input_capture.signal_filter" value="module.driver.input_capture.signal_filter.none"/>
+      <property id="module.driver.input_capture.clock_divider" value="module.driver.input_capture.clock_divider.div1"/>
+      <property id="module.driver.input_capture.enable_level" value="module.driver.input_capture.enable_level.none"/>
+      <property id="module.driver.input_capture.enable_filter" value="module.driver.input_capture.enable_filter.none"/>
+      <property id="module.driver.input_capture.capture_ipl" value="board.icu.common.irq.priority2"/>
+      <property id="module.driver.input_capture.overflow_ipl" value="board.icu.common.irq.priority2"/>
     </module>
     <context id="_hal.0">
       <stack module="module.driver.ioport_on_ioport.918725209"/>
@@ -709,12 +719,28 @@
       <property id="_symbol" value="Timing_Thread"/>
       <property id="rtos.threadx.thread.name" value="Timing Thread"/>
       <property id="rtos.threadx.thread.stack" value="1024"/>
-      <property id="rtos.threadx.thread.priority" value="1"/>
+      <property id="rtos.threadx.thread.priority" value="5"/>
       <property id="rtos.threadx.thread.autostart" value="rtos.threadx.thread.autostart.enabled"/>
       <property id="rtos.threadx.thread.timeslice" value="1"/>
       <stack module="module.driver.timer_on_gpt.131107345"/>
-      <stack module="module.driver.external_irq_on_icu.736141783"/>
-      <stack module="module.driver.timer_on_gpt.1791548251"/>
+    </context>
+    <context id="rtos.threadx.thread.1352628907">
+      <property id="_symbol" value="PWM_Thread"/>
+      <property id="rtos.threadx.thread.name" value="PWM Thread"/>
+      <property id="rtos.threadx.thread.stack" value="1024"/>
+      <property id="rtos.threadx.thread.priority" value="5"/>
+      <property id="rtos.threadx.thread.autostart" value="rtos.threadx.thread.autostart.enabled"/>
+      <property id="rtos.threadx.thread.timeslice" value="1"/>
+      <stack module="module.driver.timer_on_gpt.532993844"/>
+    </context>
+    <context id="rtos.threadx.thread.1780712284">
+      <property id="_symbol" value="Input_Capture_Thread"/>
+      <property id="rtos.threadx.thread.name" value="Input Capture Thread"/>
+      <property id="rtos.threadx.thread.stack" value="1024"/>
+      <property id="rtos.threadx.thread.priority" value="5"/>
+      <property id="rtos.threadx.thread.autostart" value="rtos.threadx.thread.autostart.enabled"/>
+      <property id="rtos.threadx.thread.timeslice" value="1"/>
+      <stack module="module.driver.input_capture_on_gpt.349187557"/>
     </context>
     <config id="config.driver.jpeg_decode">
       <property id="config.driver.jpeg_decode.param_checking_enable" value="config.driver.jpeg_decode.param_checking_enable.enabled"/>
@@ -772,6 +798,9 @@
     </config>
     <config id="config.framework.sf_jpeg_decode">
       <property id="config.framework.sf_jpeg_decode.param_checking_enable" value="config.framework.sf_jpeg_decode.param_checking_enable.enabled"/>
+    </config>
+    <config id="config.driver.gpt_input_capture">
+      <property id="config.driver.gpt_input_capture.param_checking_enable" value="config.driver.gpt_input_capture.param_checking_enable.bsp"/>
     </config>
     <config id="config.driver.agt">
       <property id="config.driver.agt.param_checking_enable" value="config.driver.agt.param_checking_enable.bsp"/>

@@ -4,6 +4,8 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/synergy_gen/Input_Capture_Thread.c \
+../src/synergy_gen/PWM_Thread.c \
 ../src/synergy_gen/Timing_Thread.c \
 ../src/synergy_gen/common_data.c \
 ../src/synergy_gen/hal_data.c \
@@ -14,6 +16,8 @@ C_SRCS += \
 ../src/synergy_gen/sensor_thread.c 
 
 OBJS += \
+./src/synergy_gen/Input_Capture_Thread.o \
+./src/synergy_gen/PWM_Thread.o \
 ./src/synergy_gen/Timing_Thread.o \
 ./src/synergy_gen/common_data.o \
 ./src/synergy_gen/hal_data.o \
@@ -24,6 +28,8 @@ OBJS += \
 ./src/synergy_gen/sensor_thread.o 
 
 C_DEPS += \
+./src/synergy_gen/Input_Capture_Thread.d \
+./src/synergy_gen/PWM_Thread.d \
 ./src/synergy_gen/Timing_Thread.d \
 ./src/synergy_gen/common_data.d \
 ./src/synergy_gen/hal_data.d \
