@@ -1,16 +1,17 @@
 #include "sensor_thread.h"
 #include "sensor_api.h"
+#include "Ram.h"
 
-    static int sensor_value;
-    void post_message();
+static int sensor_value;
+void post_message();
 
-    sensor_payload_t * pDataPayload;
-              sf_message_post_err_t errPost; //place for posting error codes to go
-              sf_message_post_cfg_t post_cfg =
-              {
-                .priority = SF_MESSAGE_PRIORITY_NORMAL, //normal priority
-                .p_callback = NULL //no callback needed
-              };
+sensor_payload_t * pDataPayload;
+          sf_message_post_err_t errPost; //place for posting error codes to go
+          sf_message_post_cfg_t post_cfg =
+          {
+            .priority = SF_MESSAGE_PRIORITY_NORMAL, //normal priority
+            .p_callback = NULL //no callback needed
+          };
 
 
 /* Sensor Thread entry function */
@@ -44,8 +45,8 @@ void sensor_thread_entry(void)
                pDataPayload->sensor_value=sensor_value++;
                g_sf_message0.p_api->post(g_sf_message0.p_ctrl, (sf_message_header_t *) pDataPayload,
                                          &post_cfg, &errPost, TX_WAIT_FOREVER); //post the message
-                  }
-                  tx_thread_sleep (200);
+           }
+               tx_thread_sleep (200);
     }
 }
 

@@ -1,6 +1,6 @@
 #include "Input_Capture_Thread.h"
+#include "Hall_Sensor.h"
 #include "Ram.h"
-
 
 /* Input Capture Thread entry function */
 void Input_Capture_Thread_entry(void)
@@ -12,6 +12,9 @@ void Input_Capture_Thread_entry(void)
     /* TODO: add your own code here */
     while (1)
     {
+        SR_InitFilter((uint16_t)u32I_RPM);
+        SR_I16Filter(&i16InputVar, &i32VarAccumulator, &i16AverageVar);
+
         tx_thread_sleep (1);
     }
 }
@@ -27,11 +30,6 @@ void input_capture_callback(input_capture_callback_args_t *p_args)
 
             /* Get the value of the captured counter and overflows number */
             capture_counter = p_args->counter;
-
-            /*
-            * Currently there is a limitation for using API of lastCaptureGet, otherwise captured counter and overflows number can
-            * be got from g_input_capture.p_api->lastCaptureGet. Please refer to the documentation for more information.
-            */
 
             /* Get the frequency of PCLKD in Hz*/
             g_cgc_on_cgc.systemClockFreqGet(CGC_SYSTEM_CLOCKS_PCLKD, &pclk_freq_hz);
@@ -51,13 +49,7 @@ void input_capture_callback(input_capture_callback_args_t *p_args)
             break;
 
         case INPUT_CAPTURE_EVENT_OVERFLOW:
-
-            /* Overflows counter add one */
             capture_overflow++;
-
-            /*
-            * Current there is a limitation for using parameter of p_args->overflows, otherwise overflows number can be got from p_args->overflows. Please refer to the documentation.
-            */
             break;
         default:
             break;

@@ -658,7 +658,7 @@
       <property id="module.driver.input_capture.signal_filter" value="module.driver.input_capture.signal_filter.none"/>
       <property id="module.driver.input_capture.clock_divider" value="module.driver.input_capture.clock_divider.div1"/>
       <property id="module.driver.input_capture.enable_level" value="module.driver.input_capture.enable_level.none"/>
-      <property id="module.driver.input_capture.enable_filter" value="module.driver.input_capture.enable_filter.none"/>
+      <property id="module.driver.input_capture.enable_filter" value="module.driver.input_capture.enable_filter.div4"/>
       <property id="module.driver.input_capture.capture_ipl" value="board.icu.common.irq.priority2"/>
       <property id="module.driver.input_capture.overflow_ipl" value="board.icu.common.irq.priority2"/>
     </module>

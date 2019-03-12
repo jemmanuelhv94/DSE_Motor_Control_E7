@@ -751,7 +751,7 @@ Synergy Configuration
       GTIOCx Signal Filter: None
       Clock Divider: PCLK/1
       Input Capture Enable Level: None
-      Input Capture Enable Filter: None (No filtering)
+      Input Capture Enable Filter: PCLK / 4
       Capture Interrupt Priority: Priority 2
       Overflow Interrupt Priority: Priority 2
       

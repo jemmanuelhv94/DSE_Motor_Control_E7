@@ -30,8 +30,13 @@ extern uint16_t u16EdgeCnt;
 extern uint64_t u64capturems;
 extern uint32_t u32I_RPM;
 
+extern uint16_t i16InputVar;
+extern uint32_t i32VarAccumulator;
+extern uint16_t i16AverageVar;
+
 extern uint64_t capture_overflow;
 extern uint32_t capture_counter;
 
 extern void SR_Init_Ram(void);
+
 #endif /* RAM_H_ */
