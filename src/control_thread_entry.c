@@ -2,6 +2,11 @@
 #include "control_api.h"
 #include "speed_api.h"
 
+#include "control_thread.h"
+
+timer_size_t u8DutyCycle;
+ioport_level_t led_0_level = IOPORT_LEVEL_HIGH;
+int P_MOD4 = 1;
     static int speed_value=0;
     static bool activate_flag=false;
 
@@ -9,6 +14,8 @@
 /* Control Thread entry function */
 void control_thread_entry(void)
 {
+    g_timer9.p_api->open(g_timer9.p_ctrl, g_timer9.p_cfg);
+       g_timer9.p_api->start(g_timer9.p_ctrl);
 
     sf_message_header_t * pSensorDataHeader; //pointer to the message header
    control_payload_t * pSensorDataPayload; //pointer to the message payload
@@ -40,12 +47,14 @@ void control_thread_entry(void)
                       {
                           activate_flag=pSensorDataPayload->activate;
                           speed_value=pSensorDataPayload->set_point;
+                          u8DutyCycle=pSensorDataPayload->set_point;
                           g_sf_message0.p_api->bufferRelease(g_sf_message0.p_ctrl, pSensorDataHeader, SF_MESSAGE_RELEASE_OPTION_NONE);
                       }
                   }
 if(activate_flag==false)
 {
     speed_value=0;
+    u8DutyCycle=0;
 }
 
 
@@ -62,4 +71,18 @@ if(activate_flag==false)
                   }
            tx_thread_sleep (5);
     }
+}
+
+void timer9_callback(timer_callback_args_t *p_args)
+{
+    g_timer9.p_api->dutyCycleSet(g_timer9.p_ctrl,u8DutyCycle,TIMER_PWM_UNIT_PERCENT,0);
+
+    if(activate_flag == true)
+      {
+        g_ioport.p_api->pinWrite(IOPORT_PORT_01_PIN_14, IOPORT_LEVEL_LOW);
+      }
+    else
+      {
+        g_ioport.p_api->pinWrite(IOPORT_PORT_01_PIN_14, IOPORT_LEVEL_HIGH);
+      }
 }
