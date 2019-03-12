@@ -44,6 +44,7 @@ void input_capture_callback(input_capture_callback_args_t *p_args)
             u32Inst_RPM = ((MICRO_SECONDS_IN_A_MINUTE)/ (u32TimeCaptured_us)) * (uint32_t) (SCALED_FACTOR);
 
             u32Inst_RPM = (uint32_t)(u32Inst_RPM)/(uint32_t)(MAGNET_POLES * SCALED_FACTOR);
+            u32I_RPM = u32Inst_RPM;
 
             u64time_captured_ns = 0;
             capture_overflow = 0;

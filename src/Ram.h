@@ -28,6 +28,7 @@ extern uint16_t u16HallCnt;
 extern uint32_t u32Inst_RPM;
 extern uint16_t u16EdgeCnt;
 extern uint64_t u64capturems;
+extern uint32_t u32I_RPM;
 
 extern uint64_t capture_overflow;
 extern uint32_t capture_counter;
