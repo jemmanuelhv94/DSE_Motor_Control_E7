@@ -8,13 +8,12 @@ void Input_Capture_Thread_entry(void)
     g_input_capture.p_api->open(g_input_capture.p_ctrl, g_input_capture.p_cfg);
     g_input_capture.p_api->enable(g_input_capture.p_ctrl);
     SR_Init_Ram();
+    tx_thread_sleep (100);
+    SR_InitFilter(&stSpeedSensorFilterParam, C_FILTER_RATIO);
 
     /* TODO: add your own code here */
     while (1)
     {
-        SR_InitFilter((uint16_t)u32I_RPM);
-        SR_I16Filter(&i16InputVar, &i32VarAccumulator, &i16AverageVar);
-
         tx_thread_sleep (1);
     }
 }
@@ -42,10 +41,12 @@ void input_capture_callback(input_capture_callback_args_t *p_args)
             u32Inst_RPM = ((MICRO_SECONDS_IN_A_MINUTE)/ (u32TimeCaptured_us)) * (uint32_t) (SCALED_FACTOR);
 
             u32Inst_RPM = (uint32_t)(u32Inst_RPM)/(uint32_t)(MAGNET_POLES * SCALED_FACTOR);
-            u32I_RPM = u32Inst_RPM;
 
             u64time_captured_ns = 0;
             capture_overflow = 0;
+
+            SR_DigitalFilter(u32Inst_RPM,&stSpeedSensorFilterParam );
+
             break;
 
         case INPUT_CAPTURE_EVENT_OVERFLOW:

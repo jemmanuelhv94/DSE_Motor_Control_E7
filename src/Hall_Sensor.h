@@ -5,11 +5,13 @@
  *      Author: JHVMEXMM
  */
 #include "main_thread.h"
+#include "Ram.h"
 
 #ifndef HALL_SENSOR_H_
 #define HALL_SENSOR_H_
 
-extern void SR_I16Filter(uint16_t *lpi16Data, uint32_t *lpi32ShiftAdd, uint16_t *lpi16Result);
-extern void SR_InitFilter(uint16_t li16InputData);
+extern void SR_DigitalFilter(uint32_t lu32SignalValue, struct stFilterParameters *lpstFilterParam);
+extern void SR_InitFilter(struct stFilterParameters *lpstFilterParam, uint16_t lu16FilterCoef);
+extern void SR_SetFilterOrder(struct stFilterParameters *lpstFilterParam, uint16_t lu16FilterCoef);
 
 #endif /* HALL_SENSOR_H_ */

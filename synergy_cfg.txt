@@ -719,7 +719,7 @@ Synergy Configuration
       Channel: 9
       Mode: PWM
       Duty Cycle Range (only applicable in PWM mode): Shortest: 2 PCLK, Longest: (Period - 1) PCLK
-      Period Value: 1
+      Period Value: 10
       Period Unit: Milliseconds
       Duty Cycle Value: 50
       Duty Cycle Unit: Unit Percent

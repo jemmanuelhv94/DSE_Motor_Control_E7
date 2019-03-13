@@ -28,7 +28,7 @@ extern uint16_t u16HallCnt;
 extern uint32_t u32Inst_RPM;
 extern uint16_t u16EdgeCnt;
 extern uint64_t u64capturems;
-extern uint32_t u32I_RPM;
+extern uint32_t u32Filtered_RPM;
 
 extern uint16_t i16InputVar;
 extern uint32_t i32VarAccumulator;
@@ -36,6 +36,27 @@ extern uint16_t i16AverageVar;
 
 extern uint64_t capture_overflow;
 extern uint32_t capture_counter;
+
+/***********************************************************************
+             Digital Filter module functions
+***********************************************************************/
+#define C_FILTER_STATE_INIT     (uint8_t)0
+#define C_FILTER_STATE_PROCESS  (uint8_t)1
+
+#define C_FILTER_MIN_SAMPLES    (uint8_t)3
+#define C_FILTER_SCALE_FACTOR   (uint16_t)128
+#define C_FILTER_RATIO          (uint16_t)256
+
+struct stFilterParameters
+  {
+    uint8_t u8FilterState;
+    uint8_t u8SampleCnt;
+    uint32_t u32FilteredSignal;
+    uint32_t u32LastFilteredSignal;
+    uint16_t u16FilterCoef;
+  };
+
+struct stFilterParameters stSpeedSensorFilterParam;              // Ram Definition
 
 extern void SR_Init_Ram(void);
 

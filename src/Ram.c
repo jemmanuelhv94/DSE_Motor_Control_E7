@@ -9,7 +9,7 @@ uint64_t u64time_captured_ns;
 uint64_t u32TimeCaptured_us;
 uint16_t u16HallCnt;
 uint32_t u32Inst_RPM;
-uint32_t u32I_RPM;
+uint32_t u32Filtered_RPM;
 uint16_t u16EdgeCnt;
 uint64_t u64capturems;
 
@@ -26,13 +26,13 @@ void SR_Init_Ram(void)
     u32TimeCaptured_us = 0;
     u16HallCnt = 0;
     u32Inst_RPM = 0;
-    u32I_RPM = 0;
+    u32Filtered_RPM = 0;
     u16EdgeCnt = 0;
     u64capturems = 0;
 
-    uint16_t i16InputVar = 0;
-    uint32_t i32VarAccumulator = 0;
-    uint16_t i16AverageVar = 0;
+    i16InputVar = 0;
+    i32VarAccumulator = 0;
+    i16AverageVar = 0;
 
     capture_overflow = 0;
     capture_counter = 0;
