@@ -59,6 +59,8 @@ src/main_thread_entry.o: ../src/main_thread_entry.c \
  C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\framework\api/sf_touch_panel_api.h \
  C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\framework\api/sensor_api.h \
  C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\framework\api/sf_message_api.h \
+ C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\framework\api/control_api.h \
+ C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\framework\api/speed_api.h \
  C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\driver\instances/r_jpeg_decode.h \
  C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\driver\api/r_jpeg_decode_api.h \
  C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy_cfg\ssp_cfg\driver/r_jpeg_decode_cfg.h \
@@ -97,7 +99,7 @@ src/main_thread_entry.o: ../src/main_thread_entry.c \
  C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\driver\instances/r_sci_spi.h \
  C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\driver\api/r_spi_api.h \
  ../src/gui/guiapp_specifications.h ../src/gui/guiapp_resources.h \
- ../src/hardware/lcd.h
+ ../src/guiapp_event_handlers.h ../src/hardware/lcd.h
 
 C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\src\synergy_gen/main_thread.h:
 
@@ -219,6 +221,10 @@ C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\framework\a
 
 C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\framework\api/sf_message_api.h:
 
+C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\framework\api/control_api.h:
+
+C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\framework\api/speed_api.h:
+
 C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\driver\instances/r_jpeg_decode.h:
 
 C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\driver\api/r_jpeg_decode_api.h:
@@ -296,5 +302,7 @@ C:\Users\uriel\Documents\GitHub\DSE_Motor_Control_E7\synergy\ssp\inc\driver\api/
 ../src/gui/guiapp_specifications.h:
 
 ../src/gui/guiapp_resources.h:
+
+../src/guiapp_event_handlers.h:
 
 ../src/hardware/lcd.h:

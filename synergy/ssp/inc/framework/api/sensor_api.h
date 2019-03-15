@@ -14,7 +14,7 @@
 typedef struct sensor_payload
 {
     sf_message_header_t     header;     ///< Required header for messaging framework.
-    int16_t                 sensor_value;          ///< sensor value.
+    int                 sensor_value;          ///< sensor value.
 } sensor_payload_t; //This name is specified in "Event Class" properties as "Payload Type"
 
 #endif /* SSP_INC_FRAMEWORK_API_SENSOR_API_H_ */

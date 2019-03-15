@@ -17,8 +17,8 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-src/gui \
 src \
+src/gui \
 src/hardware \
 src/synergy_gen \
 synergy/board/s7g2_sk \
@@ -31,6 +31,8 @@ synergy/ssp/src/driver/r_dtc \
 synergy/ssp/src/driver/r_elc \
 synergy/ssp/src/driver/r_fmi \
 synergy/ssp/src/driver/r_glcd \
+synergy/ssp/src/driver/r_gpt \
+synergy/ssp/src/driver/r_gpt_input_capture \
 synergy/ssp/src/driver/r_icu \
 synergy/ssp/src/driver/r_ioport \
 synergy/ssp/src/driver/r_jpeg_common \
