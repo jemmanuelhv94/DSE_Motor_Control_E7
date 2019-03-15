@@ -1433,18 +1433,12 @@
 <string_record>
 <id>LBL_INFO_DEV</id>
 <font>0</font>
-<val>
-DEV:
-
-JOSE MANUEL
-JOSE EMMANUEL
-HUGO URIEL CHAVEZ MARTINEZ</val>
+<val>DEV:JOSE MANUELJOSE EMMANUELHUGO URIEL</val>
 </string_record>
 <string_record>
 <id>LBL_INFO_VER</id>
 <font>0</font>
-<val>SW VER: 
-HW VER:</val>
+<val>SW VER: HW VER:1.0</val>
 </string_record>
 <string_record>
 <id>STRING_10</id>
@@ -1521,7 +1515,7 @@ HW VER:</val>
 <id_name>PR_INFO_DUTY_CYCLE</id_name>
 <template>FALSE</template>
 <visible_at_startup>FALSE</visible_at_startup>
-<string_id>LBL_INFO_DUTY_CYCLE</string_id>
+<string_id>LBL_INFO_SPEED</string_id>
 <font_id>PROMPT</font_id>
 <normal_text_color>SELECTED_TEXT</normal_text_color>
 <selected_text_color>SELECTED_TEXT</selected_text_color>
@@ -1565,7 +1559,7 @@ HW VER:</val>
 <id_name>PR_INFO_SPEED</id_name>
 <template>FALSE</template>
 <visible_at_startup>FALSE</visible_at_startup>
-<string_id>LBL_INFO_SPEED</string_id>
+<string_id>LBL_INFO_DUTY_CYCLE</string_id>
 <font_id>PROMPT</font_id>
 <normal_text_color>SELECTED_TEXT</normal_text_color>
 <selected_text_color>SELECTED_TEXT</selected_text_color>

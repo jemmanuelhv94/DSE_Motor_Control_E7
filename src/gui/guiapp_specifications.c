@@ -6,7 +6,7 @@
 /*  www.expresslogic.com.                                                      */
 /*                                                                             */
 /*  GUIX Studio Revision 5.4.1.1                                               */
-/*  Date (dd.mm.yyyy):  8. 3.2019   Time (hh:mm): 01:12                        */
+/*  Date (dd.mm.yyyy): 15. 3.2019   Time (hh:mm): 07:02                        */
 /*******************************************************************************/
 
 
@@ -326,7 +326,7 @@ GX_WINDOW_PROPERTIES window3_properties =
 };
 GX_PROMPT_PROPERTIES window3_PR_INFO_DUTY_CYCLE_properties =
 {
-    GX_STRING_ID_LBL_INFO_DUTY_CYCLE,        /* string id                      */
+    GX_STRING_ID_LBL_INFO_SPEED,             /* string id                      */
     GX_FONT_ID_PROMPT,                       /* font id                        */
     GX_COLOR_ID_SELECTED_TEXT,               /* normal text color              */
     GX_COLOR_ID_SELECTED_TEXT                /* selected text color            */
@@ -340,7 +340,7 @@ GX_PROMPT_PROPERTIES window3_PR_INFO_SET_POINT_properties =
 };
 GX_PROMPT_PROPERTIES window3_PR_INFO_SPEED_properties =
 {
-    GX_STRING_ID_LBL_INFO_SPEED,             /* string id                      */
+    GX_STRING_ID_LBL_INFO_DUTY_CYCLE,        /* string id                      */
     GX_FONT_ID_PROMPT,                       /* font id                        */
     GX_COLOR_ID_SELECTED_TEXT,               /* normal text color              */
     GX_COLOR_ID_SELECTED_TEXT                /* selected text color            */

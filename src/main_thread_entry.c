@@ -53,6 +53,7 @@ void main_thread_entry(void) {
     };
     control_payload_t * pDataPayload; //pointer to data to be sent to uart
 
+
     /* Initializes GUIX. */
     status = gx_system_initialize();
     if(TX_SUCCESS != status)
@@ -189,6 +190,7 @@ void main_thread_entry(void) {
 		                {
 		                case SF_MESSAGE_EVENT_SENSOR:
 		                {
+		                    update_ventilador_2();
 		                    update_duty_cycle(sensor_payload->sensor_value);
 		                    /** Translate an SSP touch event into a GUIX event */
 		                   // new_gui_event = ssp_touch_to_guix((sf_touch_panel_payload_t*)p_message, &g_gx_event);
@@ -243,8 +245,9 @@ void main_thread_entry(void) {
             pDataPayload->header.event_b.class = SF_MESSAGE_EVENT_CLASS_CONTROL; //set the event class
             pDataPayload->header.event_b.class_instance = 2; //set the class instance
             pDataPayload->header.event_b.code = SF_MESSAGE_EVENT_NEW_DATA; //set the message type
-            pDataPayload->set_point=get_set_point();
+            pDataPayload->set_point=100-get_set_point();
             pDataPayload->activate=get_flag();
+            pDataPayload->feedback=get_speed();
             g_sf_message0.p_api->post(g_sf_message0.p_ctrl, (sf_message_header_t *) pDataPayload,
                                       &post_cfg, &errPost, TX_NO_WAIT); //post the message
                }

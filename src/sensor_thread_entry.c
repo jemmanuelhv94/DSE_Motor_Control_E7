@@ -1,45 +1,20 @@
 #include "sensor_thread.h"
 #include "sensor_api.h"
-#include "sensor_thread.h"
+#include "sensor_thread_entry.h"
 #include "Ram.h"
+#include "Hall_Sensor.h"
 
-    static int sensor_value;
-    void post_message();
 /* Sensor Thread entry function */
 void sensor_thread_entry(void)
 {
-    g_input_capture.p_api->open(g_input_capture.p_ctrl, g_input_capture.p_cfg);
-    g_input_capture.p_api->enable(g_input_capture.p_ctrl);
-    SR_Init_Ram();
-
-
-    //Message init
-          //sending sensordata init
-          sf_message_header_t * pPostBuffer; //pointer for the buffer that must be acquired
-          sf_message_acquire_cfg_t acquireCfg = {.buffer_keep =false}; //do not keep the buffer, other threads need it
-          ssp_err_t errorBuff; //place for error codes from buffer acquisition to go
-          sf_message_post_err_t errPost; //place for posting error codes to go
-          sf_message_post_cfg_t post_cfg =
-          {
-            .priority = SF_MESSAGE_PRIORITY_NORMAL, //normal priority
-            .p_callback = NULL //no callback needed
-          };
-          sensor_payload_t * pDataPayload; //pointer to the receiving message payload
-       /* TODO: add your own code here */
-       while (1)
-       {
-           errorBuff = g_sf_message0.p_api->bufferAcquire(g_sf_message0.p_ctrl, &pPostBuffer, &acquireCfg, TX_WAIT_FOREVER);
-           if (errorBuff==SSP_SUCCESS)
-           {
-               pDataPayload = (sensor_payload_t *) pPostBuffer; //cast buffer to our payload
-               pDataPayload->header.event_b.class = SF_MESSAGE_EVENT_CLASS_SENSOR; //set the event class
-               pDataPayload->header.event_b.class_instance = 0; //set the class instance
-               pDataPayload->header.event_b.code = SF_MESSAGE_EVENT_SENSOR; //set the message type
-               pDataPayload->sensor_value=u32I_RPM;
-               g_sf_message0.p_api->post(g_sf_message0.p_ctrl, (sf_message_header_t *) pDataPayload,
-                                         &post_cfg, &errPost, TX_WAIT_FOREVER); //post the message
-                  }
-           tx_thread_sleep (20);
+    g_input_capture.p_api->open (g_input_capture.p_ctrl, g_input_capture.p_cfg);
+    g_input_capture.p_api->enable (g_input_capture.p_ctrl);
+    SR_Init_Ram ();
+    SR_InitFilter(&stSpeedSensorFilterParam, C_FILTER_RATIO);
+    while (1)
+    {
+        write_message_sensor();
+        tx_thread_sleep (100);
     }
 }
 
@@ -54,11 +29,6 @@ void input_capture_callback(input_capture_callback_args_t *p_args)
             /* Get the value of the captured counter and overflows number */
             capture_counter = p_args->counter;
 
-            /*
-            * Currently there is a limitation for using API of lastCaptureGet, otherwise captured counter and overflows number can
-            * be got from g_input_capture.p_api->lastCaptureGet. Please refer to the documentation for more information.
-            */
-
             /* Get the frequency of PCLKD in Hz*/
             g_cgc_on_cgc.systemClockFreqGet(CGC_SYSTEM_CLOCKS_PCLKD, &pclk_freq_hz);
 
@@ -70,24 +40,34 @@ void input_capture_callback(input_capture_callback_args_t *p_args)
             u32Inst_RPM = ((MICRO_SECONDS_IN_A_MINUTE)/ (u32TimeCaptured_us)) * (uint32_t) (SCALED_FACTOR);
 
             u32Inst_RPM = (uint32_t)(u32Inst_RPM)/(uint32_t)(MAGNET_POLES * SCALED_FACTOR);
-            u32I_RPM = u32Inst_RPM;
 
             u64time_captured_ns = 0;
             capture_overflow = 0;
+
+            SR_DigitalFilter(u32Inst_RPM,&stSpeedSensorFilterParam);
+
             break;
 
         case INPUT_CAPTURE_EVENT_OVERFLOW:
-
-            /* Overflows counter add one */
             capture_overflow++;
-
-            /*
-            * Current there is a limitation for using parameter of p_args->overflows, otherwise overflows number can be got from p_args->overflows. Please refer to the documentation.
-            */
             break;
         default:
             break;
     }
+
 }
 
-
+void write_message_sensor(){
+    errorBuffSensor = g_sf_message0.p_api->bufferAcquire (g_sf_message0.p_ctrl, &pPostBufferSensor,
+                                                          &acquireCfgSensor, TX_WAIT_FOREVER);
+    if (errorBuffSensor == SSP_SUCCESS)
+    {
+        pDataPayloadSensor = (sensor_payload_t *) pPostBufferSensor; //cast buffer to our payload
+        pDataPayloadSensor->header.event_b.class = SF_MESSAGE_EVENT_CLASS_SENSOR; //set the event class
+        pDataPayloadSensor->header.event_b.class_instance = 0; //set the class instance
+        pDataPayloadSensor->header.event_b.code = SF_MESSAGE_EVENT_SENSOR; //set the message type
+        pDataPayloadSensor->sensor_value = u32Inst_RPM;
+        g_sf_message0.p_api->post (g_sf_message0.p_ctrl, (sf_message_header_t *) pDataPayloadSensor,
+                                   &post_cfgSensor, &errPostSensor, TX_WAIT_FOREVER); //post the message
+    }
+}

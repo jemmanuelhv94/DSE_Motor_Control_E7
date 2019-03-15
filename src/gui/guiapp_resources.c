@@ -6,7 +6,7 @@
 /*  site at www.expresslogic.com.                                              */
 /*                                                                             */
 /*  GUIX Studio Revision 5.4.1.1                                               */
-/*  Date (dd.mm.yyyy):  8. 3.2019   Time (hh:mm): 01:12                        */
+/*  Date (dd.mm.yyyy): 15. 3.2019   Time (hh:mm): 07:02                        */
 /*******************************************************************************/
 
 
@@ -19171,8 +19171,8 @@ GX_CONST GX_UBYTE display_1_STRING_4_English[10] = "Team 7DSE";
 GX_CONST GX_UBYTE display_1_STRING_5_English[7] = "prompt";
 GX_CONST GX_UBYTE display_1_STRING_6_English[7] = "button";
 GX_CONST GX_UBYTE display_1_STRING_7_English[4] = "DEV";
-GX_CONST GX_UBYTE display_1_LBL_INFO_DEV_English[65] = "\nDEV:\n\nJOSE MANUEL\nJOSE EMMANUEL\nHUGO URIEL CHAVEZ MARTINEZ";
-GX_CONST GX_UBYTE display_1_LBL_INFO_VER_English[18] = "SW VER: \nHW VER:";
+GX_CONST GX_UBYTE display_1_LBL_INFO_DEV_English[49] = "\rDEV:\r\rJOSE MANUEL\rJOSE EMMANUEL\rHUGO URIEL";
+GX_CONST GX_UBYTE display_1_LBL_INFO_VER_English[21] = "SW VER: \rHW VER:1.0";
 GX_CONST GX_UBYTE display_1_STRING_10_English[10] = "text_view";
 GX_CONST GX_UBYTE display_1_STRING_8_English[6] = "radio";
 

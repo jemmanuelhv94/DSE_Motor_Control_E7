@@ -1,88 +1,97 @@
 #include "control_thread.h"
 #include "control_api.h"
 #include "speed_api.h"
-
-#include "control_thread.h"
-
-timer_size_t u8DutyCycle;
-ioport_level_t led_0_level = IOPORT_LEVEL_HIGH;
-int P_MOD4 = 1;
-    static int speed_value=0;
-    static bool activate_flag=false;
-
+#include "control_thread_entry.h"
 
 /* Control Thread entry function */
 void control_thread_entry(void)
 {
-    g_timer9.p_api->open(g_timer9.p_ctrl, g_timer9.p_cfg);
-       g_timer9.p_api->start(g_timer9.p_ctrl);
+    g_timer9.p_api->open (g_timer9.p_ctrl, g_timer9.p_cfg);
+    g_timer9.p_api->start (g_timer9.p_ctrl);
 
-    sf_message_header_t * pSensorDataHeader; //pointer to the message header
-   control_payload_t * pSensorDataPayload; //pointer to the message payload
-    //Message init
-          //sending sensordata init
+    /* TODO: add your own code here */
+    while (1)
+    {
 
-          sf_message_header_t * pPostBuffer; //pointer for the buffer that must be acquired
-          sf_message_acquire_cfg_t acquireCfg = {.buffer_keep =false}; //do not keep the buffer, other threads need it
-          ssp_err_t errorBuff; //place for error codes from buffer acquisition to go
-          sf_message_post_err_t errPost; //place for posting error codes to go
-          sf_message_post_cfg_t post_cfg =
-          {
-            .priority = SF_MESSAGE_PRIORITY_NORMAL, //normal priority
-            .p_callback = NULL //no callback needed
-          };
-          speed_payload_t * pDataPayload; //pointer to the receiving message payload
-       /* TODO: add your own code here */
-       while (1)
-       {
-
-           g_sf_message0.p_api->pend(g_sf_message0.p_ctrl, &control_thread_message_queue,
-                                       &pSensorDataHeader, TX_NO_WAIT); //if a message has been posted to the queue, store its address in pSensorDataHeader
-
-                  if (pSensorDataHeader->event_b.class_code == SF_MESSAGE_EVENT_CLASS_CONTROL) //if the message is the right kind
-                  {
-                      pSensorDataPayload = (control_payload_t *) pSensorDataHeader; //cast the received message to the custom type
-                      //store the sensor information in some buffers, this part is application dependent
-                      if (pSensorDataPayload->header.event_b.code == SF_MESSAGE_EVENT_NEW_DATA) //if the message event is the right kind
-                      {
-                          activate_flag=pSensorDataPayload->activate;
-                          speed_value=pSensorDataPayload->set_point;
-                          u8DutyCycle=pSensorDataPayload->set_point;
-                          g_sf_message0.p_api->bufferRelease(g_sf_message0.p_ctrl, pSensorDataHeader, SF_MESSAGE_RELEASE_OPTION_NONE);
-                      }
-                  }
-if(activate_flag==false)
-{
-    speed_value=0;
-    u8DutyCycle=0;
-}
-
-
-           errorBuff = g_sf_message0.p_api->bufferAcquire(g_sf_message0.p_ctrl, &pPostBuffer, &acquireCfg, TX_NO_WAIT);
-           if (errorBuff==SSP_SUCCESS)
-           {
-               pDataPayload = (speed_payload_t *) pPostBuffer; //cast buffer to our payload
-               pDataPayload->header.event_b.class = SF_MESSAGE_EVENT_CLASS_SPEED; //set the event class
-               pDataPayload->header.event_b.class_instance = 1; //set the class instance
-               pDataPayload->header.event_b.code = SF_MESSAGE_EVENT_NEW_DATA; //set the message type
-               pDataPayload->speed_value=speed_value++;
-               g_sf_message0.p_api->post(g_sf_message0.p_ctrl, (sf_message_header_t *) pDataPayload,
-                                         &post_cfg, &errPost, TX_NO_WAIT); //post the message
-                  }
-           tx_thread_sleep (5);
+        read_message_control();
+        if (activate_flag == false)
+        {
+            speed_value = 0;
+            u8DutyCycle = 100;
+        }
+        else{
+        }
+        write_message_control();
+        tx_thread_sleep (2);
     }
 }
 
 void timer9_callback(timer_callback_args_t *p_args)
 {
-    g_timer9.p_api->dutyCycleSet(g_timer9.p_ctrl,u8DutyCycle,TIMER_PWM_UNIT_PERCENT,0);
+    g_timer9.p_api->dutyCycleSet (g_timer9.p_ctrl, u8DutyCycle, TIMER_PWM_UNIT_PERCENT, 0);
 
-    if(activate_flag == true)
-      {
-        g_ioport.p_api->pinWrite(IOPORT_PORT_01_PIN_14, IOPORT_LEVEL_LOW);
-      }
+    if (activate_flag == true)
+    {
+        g_ioport.p_api->pinWrite (IOPORT_PORT_01_PIN_14, IOPORT_LEVEL_LOW);
+    }
     else
-      {
-        g_ioport.p_api->pinWrite(IOPORT_PORT_01_PIN_14, IOPORT_LEVEL_HIGH);
-      }
+    {
+        g_ioport.p_api->pinWrite (IOPORT_PORT_01_PIN_14, IOPORT_LEVEL_HIGH);
+    }
+}
+
+//int PIDcontrol(int Kp, int Ki, int set_point, int rpm)
+//{
+//
+//    float P = 0, I = 0, D = 0;
+//
+//    int Uc, error_acum, error;
+//    int Kz;
+//    error=set_point-rpm;
+//    unsigned long T;
+//
+//    // T = millis() - ultimo_T;
+//
+//    Kz = 1 / 1000.00;
+//    error_acum += error;
+//
+//    P = Kp * error;
+//    I = Ki * ((error_acum + error) / Kz);
+//
+//    Uc = P + I + D;
+//    return (Uc);
+//}
+
+void write_message_control(){
+    errorBuffControl = g_sf_message0.p_api->bufferAcquire (g_sf_message0.p_ctrl, &pPostBufferControl,
+                                                           &acquireCfgControl, TX_NO_WAIT);
+    if (errorBuffControl == SSP_SUCCESS)
+    {
+        pDataPayloadControl = (speed_payload_t *) pPostBufferControl; //cast buffer to our payload
+        pDataPayloadControl->header.event_b.class = SF_MESSAGE_EVENT_CLASS_SPEED; //set the event class
+        pDataPayloadControl->header.event_b.class_instance = 1; //set the class instance
+        pDataPayloadControl->header.event_b.code = SF_MESSAGE_EVENT_NEW_DATA; //set the message type
+        pDataPayloadControl->speed_value = u8DutyCycle;
+        g_sf_message0.p_api->post (g_sf_message0.p_ctrl, (sf_message_header_t *) pDataPayloadControl,
+                                   &post_cfgControl, &errPostControl, TX_NO_WAIT); //post the message
+    }
+}
+
+void read_message_control(){
+    g_sf_message0.p_api->pend (g_sf_message0.p_ctrl, &control_thread_message_queue, &pSensorDataHeader, TX_NO_WAIT); //if a message has been posted to the queue, store its address in pSensorDataHeader
+
+    if (pSensorDataHeader->event_b.class_code == SF_MESSAGE_EVENT_CLASS_CONTROL) //if the message is the right kind
+    {
+        pSensorDataPayload = (control_payload_t *) pSensorDataHeader; //cast the received message to the custom type
+        //store the sensor information in some buffers, this part is application dependent
+        if (pSensorDataPayload->header.event_b.code == SF_MESSAGE_EVENT_NEW_DATA) //if the message event is the right kind
+        {
+            activate_flag = pSensorDataPayload->activate;
+            speed_value = pSensorDataPayload->set_point;
+            u8DutyCycle = pSensorDataPayload->set_point;
+            feedback_value=pSensorDataPayload->feedback;
+            g_sf_message0.p_api->bufferRelease (g_sf_message0.p_ctrl, pSensorDataHeader,
+                                                SF_MESSAGE_RELEASE_OPTION_NONE);
+        }
+    }
 }

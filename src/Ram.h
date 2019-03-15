@@ -28,10 +28,58 @@ extern uint16_t u16HallCnt;
 extern uint32_t u32Inst_RPM;
 extern uint16_t u16EdgeCnt;
 extern uint64_t u64capturems;
-extern uint32_t u32I_RPM;
+extern uint32_t u32Filtered_RPM;
+
+extern uint16_t i16InputVar;
+extern uint32_t i32VarAccumulator;
+extern uint16_t i16AverageVar;
 
 extern uint64_t capture_overflow;
 extern uint32_t capture_counter;
 
+/***********************************************************************
+             Digital Filter module functions
+***********************************************************************/
+#define C_FILTER_STATE_INIT     (uint8_t)0
+#define C_FILTER_STATE_PROCESS  (uint8_t)1
+
+#define C_FILTER_MIN_SAMPLES    (uint8_t)4
+#define C_FILTER_SCALE_FACTOR   (uint16_t)128
+#define C_FILTER_RATIO          (uint16_t)256
+
+#define C_LIMIT_VALUE_RANGE_1     (uint32_t) 500    //150 RPM
+#define C_LIMIT_VALUE_RANGE_2     (uint32_t) 1000    //300 RPM
+#define C_LIMIT_VALUE_RANGE_3     (uint32_t) 1500    //450 RPM
+#define C_LIMIT_VALUE_RANGE_4     (uint32_t) 2000    //600 RPM
+#define C_LIMIT_VALUE_RANGE_5     (uint32_t) 2500    //750 RPM
+#define C_LIMIT_VALUE_RANGE_6     (uint32_t) 3000    //900 RPM
+
+#define C_SPEED_RANGE_1           (uint8_t)1
+#define C_SPEED_RANGE_2           (uint8_t)2
+#define C_SPEED_RANGE_3           (uint8_t)3
+#define C_SPEED_RANGE_4           (uint8_t)4
+#define C_SPEED_RANGE_5           (uint8_t)5
+#define C_SPEED_RANGE_6           (uint8_t)6
+
+#define C_FILTER_ORDER_FOR_RANGE_1 (uint16_t) 32
+#define C_FILTER_ORDER_FOR_RANGE_2 (uint16_t) 32
+#define C_FILTER_ORDER_FOR_RANGE_3 (uint16_t) 32
+#define C_FILTER_ORDER_FOR_RANGE_4 (uint16_t) 128
+#define C_FILTER_ORDER_FOR_RANGE_5 (uint16_t) 128
+#define C_FILTER_ORDER_FOR_RANGE_6 (uint16_t) 128
+
+
+struct stFilterParameters
+  {
+    uint8_t u8FilterState;
+    uint8_t u8SampleCnt;
+    uint32_t u32FilteredSignal;
+    uint32_t u32LastFilteredSignal;
+    uint16_t u16FilterCoef;
+  };
+
+struct stFilterParameters stSpeedSensorFilterParam;              // Ram Definition
+
 extern void SR_Init_Ram(void);
+
 #endif /* RAM_H_ */
