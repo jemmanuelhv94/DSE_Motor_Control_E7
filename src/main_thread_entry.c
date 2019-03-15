@@ -38,7 +38,6 @@ void main_thread_entry(void) {
 	sf_message_header_t * p_message = NULL;
 	UINT      status = TX_SUCCESS;
 	sensor_payload_t* sensor_payload;
-	control_payload_t* control_payload;
     speed_payload_t* speed_payload;
 
 

@@ -9,6 +9,8 @@ extern GX_WINDOW_ROOT *p_window_root;
 static UINT show_window(GX_WINDOW *p_new, GX_WIDGET *p_widget, bool detach_old);
 //static void update_text_id(GX_WIDGET * p_widget, GX_RESOURCE_ID id, GX_CONST GX_CHAR *string_id);
 static void update_numeric(GX_WIDGET *p_widget, GX_RESOURCE_ID id, int numeric);
+void update_ventilador(GX_WIDGET *p_widget, GX_RESOURCE_ID id);
+
 
 int set_point = 0;
 int rpm = 0;
@@ -154,7 +156,7 @@ bool get_flag()
 
 void update_ventilador_2()
 {
-    update_ventilador ((GX_WIDGET *) &window3, PR_VENTILADOR);
+    update_ventilador((GX_WIDGET *) &window3, PR_VENTILADOR);
 }
 
 void update_ventilador(GX_WIDGET *p_widget, GX_RESOURCE_ID id)
