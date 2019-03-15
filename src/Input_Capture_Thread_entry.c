@@ -45,7 +45,7 @@ void input_capture_callback(input_capture_callback_args_t *p_args)
             u64time_captured_ns = 0;
             capture_overflow = 0;
 
-            SR_DigitalFilter(u32Inst_RPM,&stSpeedSensorFilterParam );
+            SR_DigitalFilter(u32Inst_RPM,&stSpeedSensorFilterParam);
 
             break;
 

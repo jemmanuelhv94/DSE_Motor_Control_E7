@@ -2,7 +2,7 @@
 #include "Ram.h"
 
 /*****************************************************************************
- Name:          SRE_DigitalFilter
+ Name:          SR_DigitalFilter
  Parameters:    lu32SignalValue: Signal to be filtered
                 struct stFilterParameters *lpstFilterParam: struct to perform
                 the filter
@@ -51,12 +51,13 @@ void SR_DigitalFilter(uint32_t lu32SignalValue, struct stFilterParameters *lpstF
   lpstFilterParam->u32LastFilteredSignal = (uint32_t)lu64FilteredSignal;  // Stores the last filtered signal
   lpstFilterParam->u32FilteredSignal = (uint32_t)lu64FilteredSignal / (uint32_t)C_FILTER_SCALE_FACTOR;  // Unscale the filtered signal
   u32Filtered_RPM = lpstFilterParam->u32FilteredSignal;
+  SR_SpeedSensorAdjustFilterOrder();
 
 }
 
 
 /*****************************************************************************
- Name:          SRE_InitFilter
+ Name:          SR_InitFilter
  Parameters:    struct stFilterParameters *lpstFilterParam
                 lu16FilterCoef
  Returns:       none
@@ -81,7 +82,7 @@ void SR_InitFilter(struct stFilterParameters *lpstFilterParam, uint16_t lu16Filt
 }
 
 /*****************************************************************************
- Name:          SRE_SetFilterOrder
+ Name:          SR_SetFilterOrder
  Parameters:    struct stFilterParameters *lpstFilterParam
                 lu16FilterCoef
  Returns:       none
@@ -100,3 +101,64 @@ void SR_SetFilterOrder(struct stFilterParameters *lpstFilterParam, uint16_t lu16
       lpstFilterParam->u16FilterCoef = 1;               // Set the Filter coefficient as 1 when lu16FilterCoef is 0
     }
 }
+
+
+/*****************************************************************************
+ Name:          SR_SR_SpeedSensorAdjustFilterOrder
+ Parameters:    void
+ Returns:       none
+ Called by:
+ Calls:         SR_SetFilterOrder
+ Description:   Based in the current speed, adjust the filter order to increase the response time.
+******************************************************************************/
+void SR_SpeedSensorAdjustFilterOrder (void )
+ {
+   uint32_t lu32TemporalSpeed;
+   uint8_t lu8Range;
+
+   lu32TemporalSpeed = stSpeedSensorFilterParam.u32FilteredSignal;
+   lu8Range = C_SPEED_RANGE_6;
+
+   if (lu32TemporalSpeed < C_LIMIT_VALUE_RANGE_5)
+     {
+       lu8Range = C_SPEED_RANGE_5;
+     }
+   if (lu32TemporalSpeed < C_LIMIT_VALUE_RANGE_4)
+     {
+       lu8Range = C_SPEED_RANGE_4;
+     }
+   if (lu32TemporalSpeed < C_LIMIT_VALUE_RANGE_3)
+     {
+       lu8Range = C_SPEED_RANGE_3;
+     }
+   if (lu32TemporalSpeed < C_LIMIT_VALUE_RANGE_2)
+     {
+       lu8Range = C_SPEED_RANGE_2;
+     }
+   if (lu32TemporalSpeed < C_LIMIT_VALUE_RANGE_1)
+     {
+       lu8Range = C_SPEED_RANGE_1;
+     }
+
+   switch (lu8Range)
+     {
+     case C_SPEED_RANGE_1:
+       SR_SetFilterOrder(&stSpeedSensorFilterParam, C_FILTER_ORDER_FOR_RANGE_1);
+       break;
+     case C_SPEED_RANGE_2:
+       SR_SetFilterOrder(&stSpeedSensorFilterParam, C_FILTER_ORDER_FOR_RANGE_2);
+       break;
+     case C_SPEED_RANGE_3:
+       SR_SetFilterOrder(&stSpeedSensorFilterParam, C_FILTER_ORDER_FOR_RANGE_3);
+       break;
+     case C_SPEED_RANGE_4:
+       SR_SetFilterOrder(&stSpeedSensorFilterParam, C_FILTER_ORDER_FOR_RANGE_4);
+       break;
+     case C_SPEED_RANGE_5:
+       SR_SetFilterOrder(&stSpeedSensorFilterParam, C_FILTER_ORDER_FOR_RANGE_5);
+       break;
+     case C_SPEED_RANGE_6:
+       SR_SetFilterOrder(&stSpeedSensorFilterParam, C_FILTER_ORDER_FOR_RANGE_6);
+       break;
+     }
+ }
