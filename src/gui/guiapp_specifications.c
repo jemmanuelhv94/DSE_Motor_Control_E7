@@ -6,7 +6,7 @@
 /*  www.expresslogic.com.                                                      */
 /*                                                                             */
 /*  GUIX Studio Revision 5.4.1.1                                               */
-/*  Date (dd.mm.yyyy): 15. 3.2019   Time (hh:mm): 07:02                        */
+/*  Date (dd.mm.yyyy): 15. 3.2019   Time (hh:mm): 07:34                        */
 /*******************************************************************************/
 
 
@@ -524,11 +524,11 @@ GX_CONST GX_STUDIO_WIDGET window3_PR_SET_POINT_define =
     GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
     sizeof(GX_NUMERIC_PROMPT),               /* control block size             */
     GX_COLOR_ID_WIDGET_FILL,                 /* normal color id                */
-    GX_COLOR_ID_SELECTED_FILL,               /* selected color id              */
+    GX_COLOR_ID_WIDGET_FILL,                 /* selected color id              */
     gx_studio_numeric_prompt_create,         /* create function                */
     GX_NULL,                                 /* drawing function override      */
     GX_NULL,                                 /* event function override        */
-    {78, 206, 177, 245},                     /* widget size                    */
+    {77, 206, 176, 245},                     /* widget size                    */
     &window3_PR_SPEED_define,                /* next widget definition         */
     GX_NULL,                                 /* no child widgets               */ 
     offsetof(WINDOW3_CONTROL_BLOCK, window3_PR_SET_POINT), /* control block    */
